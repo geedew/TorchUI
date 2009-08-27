@@ -1,0 +1,207 @@
+/* RESET CSS - http://meyerweb.com/eric/tools/css/reset/   v1.0 | 20080212  */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}/* remember to define focus styles!  */:focus{outline:0}/* remember to highlight inserts somehow!  */ins{text-decoration:none}del{text-decoration:line-through}/* tables still need 'cellspacing="0"' in the markup  */table{border-collapse:collapse;border-spacing:0}
+/* BUILD CSS - Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.6.0 */
+abbr,acronym{border-bottom:1px dotted #000;cursor:help}em{font-style:italic}del{text-decoration:line-through}blockquote,ul,ol,dl{margin:1em}ol,ul,dl{margin-left:2em}ol li{list-style:decimal outside}ul li{list-style:disc outside}dl dd{margin-left:1em}th,td{border:1px solid #000;padding:.8em}th{font-weight:700;text-align:center}caption{margin-bottom:.5em;text-align:center}p,fieldset,table,pre{margin-bottom:1em}input[type=text],input[type=password],textarea{width:11.9em}hr{height:1px;width:100%;color:#DFDDD3;border:none;border-top:solid #333 1px;margin-bottom:16px;border-bottom:solid #eee 1px;}
+/* FONTS CSS - Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.6.0 */
+body{font:13px/1.231 arial,helvetica,clean,sans-serif;font-size:13px;color: #666}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif}table{font-size:inherit;font:100%}pre,code,kbd,samp,tt{font-family:monospace;font-size:108%;line-height:100%}h1{font-size:182%}h2{font-size:138.5%}h3{font-size:123.1%}h4{font-size:108%}h5{font-size:93%}h1,h2,h3{letter-spacing:0;color:#C1C2B4;margin:.3em 0}h1,h2,h3,h4,h5,h6 strong{font-weight:700;font-family:georgia,garamond, times, clean, sans-serif}h4,h5,h6 strong{font-family:arial, georgia,garamond, times, clean, sans-serif}ol{list-style:decimal}ul{list-style:square}li{margin-left:30px}p,pre{color:#333030}p,dl,hr,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:10px}h2,h3,h4,h5,h6{color:#D0A700}
+/* 960 Grid System ~ Core CSS.
+    Learn more ~ http://960.gs/
+    Licensed under GPL and MIT. */
+.container_12 {margin-left:auto;margin-right:auto;width:960px}.grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10,.grid_11,.grid_12{display:inline;float:left;margin-left:10px;margin-right:10px}.container_12 .grid_3{width:220px}.container_12 .grid_6{width:460px}.container_12 .grid_9{width:700px}.container_12 .grid_12{width:940px}.alpha{margin-left:0}.omega{margin-right:0}.container_12 .grid_1{width:60px}.container_12 .grid_2{width:140px}.container_12 .grid_4{width:300px}.container_12 .grid_5{width:380px}.container_12 .grid_7{width:540px}.container_12 .grid_8{width:620px}.container_12 .grid_10{width:780px}.container_12 .grid_11{width:860px}.container_12 .prefix_3{padding-left:240px}.container_12 .prefix_6{padding-left:480px}.container_12 .prefix_9{padding-left:720px}.container_12 .prefix_1{padding-left:80px}.container_12 .prefix_2{padding-left:160px}.container_12 .prefix_4{padding-left:320px}.container_12 .prefix_5{padding-left:400px}.container_12 .prefix_7{padding-left:560px}.container_12 .prefix_8{padding-left:640px}.container_12 .prefix_10{padding-left:800px}.container_12 .prefix_11{padding-left:880px}.container_12 .suffix_3{padding-right:240px}.container_12 .suffix_6{padding-right:480px}.container_12 .suffix_9{padding-right:720px}.container_12 .suffix_1{padding-right:80px}.container_12 .suffix_2{padding-right:160px}.container_12 .suffix_4{padding-right:320px}.container_12 .suffix_5{padding-right:400px}.container_12 .suffix_7{padding-right:560px}.container_12 .suffix_8{padding-right:640px}.container_12 .suffix_10{padding-right:800px}.container_12 .suffix_11{padding-right:880px}html body div.clear:after{clear:both;content:'.';display:block;visibility:hidden;height:0}html body div.clear{display:block}* html body div.clear{height:1%}
+
+
+/*!
+ * GLOBAL CSS
+ !*/
+/* Descriptions in the pages */
+.descriptive { 
+	font-size:85%;
+	text-align:center;
+	display:block; }
+/* Hide any element that needs hidden */
+.hide {
+	display:none; }
+
+/*!
+ * NOTIFICATIONS CSS
+ !*/
+ div.notify {
+	padding: 			10px;
+	z-index: 			9999;
+}
+
+
+/** Normal Style Positions **/
+body > div.notify {
+	position:			fixed;
+}
+
+body > div.notify.top-left {
+	left: 				0px;
+	top: 				0px;
+}
+
+body > div.notify.top-right {
+	right: 				0px;
+	top: 				0px;
+}
+
+body > div.notify.bottom-left {
+	left: 				0px;
+	bottom:				0px;
+}
+
+body > div.notify.bottom-right {
+	right: 				0px;
+	bottom: 			0px;
+}
+
+body > div.notify.center {
+	top: 				0px;
+	width: 				50%;
+	left: 				25%;
+}
+
+/** Cross Browser Styling **/
+div.center div.torchui-notification, div.center div.torchui-closer {
+	margin-left: 		auto;
+	margin-right: 		auto;
+}
+div.notify div.torchui-notification, div.torchui div.torchui-closer {
+	background-color: 		#CBDEF1;
+	color: 					#333333;
+	opacity: 				.75;
+	filter: 				alpha(opacity = 75);
+	zoom: 					1;
+	width: 					435px;
+	padding: 				10px;
+	margin-top: 			5px;
+	margin-bottom: 			5px;
+	font-family: 			Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 				12px;
+	text-align: 			left;
+	display: 				none;
+	-moz-border-radius: 	5px;
+	-webkit-border-radius:	5px;
+}
+
+div.notify div.torchui-notification.error {
+	background-color: 		#FF9999; }
+div.notify div.torchui-notification.success {
+	background-color: 		#CCFF99; }
+div.notify div.torchui-notification.debug {
+	background-color: 		#666666;
+	color: 					#FFFFFF; }
+	
+div.notify div.torchui-notification.loading {
+	background:#F1F2E2 url('../gfx/loading.gif') 0 50% no-repeat;
+	padding-left:40px;
+	width:200px;
+	color:#545454; }
+
+div.notify div.torchui-notification {
+	min-height: 			40px;
+}
+
+div.notify div.torchui-notification div.header {
+	font-weight: 			bold;
+	font-size:				10px;
+}
+
+div.notify div.torchui-notification div.close {
+	float: 					right;
+	font-weight: 			bold;
+	font-size: 				12px;
+	cursor:					pointer;
+}
+
+div.notify div.torchui-closer {
+	height: 				15px;
+	padding-top: 			4px;
+	padding-bottom: 		4px;
+	cursor: 				pointer;
+	font-size:				11px;
+	font-weight: 			bold;
+	text-align: 			center;
+}
+
+/*! / END NOTIFICATIONS !*/	
+	
+
+
+/*!
+ * FORMS CSS
+ !*/
+
+form label {
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align:top;
+	margin-left:10px;
+	margin-right:10px;
+	width: 140px; 
+	text-align:right;}
+form input[type="text"], form input[type="password"], form textarea, form select {
+	width:190px;
+	margin-left:10px;
+	margin-right:10px;
+	font-size:127%;
+	line-height:1.8;}
+	form select {
+		width:190px; }
+.container_12 form fieldset ol.grid_5 {
+	margin:0;}
+form fieldset li {
+	list-style:none;
+	padding:5px 0;
+	margin:0;}
+	form fieldset li a {
+		display:block;
+		text-align:right;
+		font-size:93%; }
+	form fieldset li p {
+		font-weight: bold; }
+	form fieldset li input[type=button], form input[type=submit], form input[type=reset] {
+		width:200px;
+		margin-left:13px;
+		margin-right:10px;
+		padding:5px;
+		font-size:127%;
+		line-height:1.8;
+		float:right; }
+	form fieldset legend {
+		font-size:127%; }
+	form fieldset fieldset {
+		border:none;
+		margin;3px 0 0; }
+	form fieldset fieldset legend {
+		padding: 0 0 5px;
+		font-weight:normal; }
+	form fieldset fieldset label {
+		display:block;
+		width:auto;
+		margin-left:70px;  }
+form em {
+	font-weight:bold;
+	font-style:normal;
+	color: #f00; }
+
+/*! / END FORMS !*/	
+	
+
+
+
+
+
+
+
+
+
+
+

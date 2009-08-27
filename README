@@ -1,0 +1,92 @@
+
+TorchUI  README
+ * Andrew Wilson
+ * http://www.geedew.com
+ * drew@geedew.com
+Last Updated - 08.26.2009
+Version -
+
+
+Description :
+	TorchUI is a combination of jQuery plugins that provide a stable functional User Interface for Websites	and applications.  It's more than just JavaScript however.  It also formats the Browsers with special CSS files that will create a less hostile development platform.  Including a Grid Framework for proper professional Designs.
+	
+
+
+Table of Contents :
+
+
+ 1. Installing
+ 2. Configuring
+ 3. Basic API
+ 4. Plugins Utilized
+ 5. Licenses
+
+
+
+--------------------
+---  INSTALLING
+--------------------
+
+Currently, the most simple way to explain how to 
+--------------------
+---  CONFIGURING
+--------------------
+Configuring can be found at the top of the TorchUI.js file... It's all there and very easy to follow in the comments.
+--------------------
+---  BASIC API
+--------------------
+
+--------------------
+---  PLUGINS UTILIZED
+--------------------
+
+* Firebug Lite -http://svn.jasonkarns.com/jquery/firebug/trunk/
+* Notify JS -http://alldorks.com/wordpress/notify
+* CMXForms
+* MaskedInput
+* ValidateJS
+* MetaData
+* jQueryUI
+
+--------------------
+---  LICENSES
+--------------------
+
+
+
+jQuery
+ 
+/*
+ * jQuery JavaScript Library v1.3.2
+ * http://jquery.com/
+ *
+ * Copyright (c) 2009 John Resig
+ * Dual licensed under the MIT and GPL licenses.
+ * http://docs.jquery.com/License
+ *
+ * Date: 2009-02-19 17:34:21 -0500 (Thu, 19 Feb 2009)
+ * Revision: 6246
+ */
+ 
+ 
+ 
+Sizzle CSS
+
+ /*
+ * Sizzle CSS Selector Engine - v0.9.3
+ *  Copyright 2009, The Dojo Foundation
+ *  Released under the MIT, BSD, and GPL Licenses.
+ *  More information: http://sizzlejs.com/
+ */
+
+
+
+Firebug Lite 
+
+/**http://svn.jasonkarns.com/jquery/firebug/trunk/**/
+
+
+
+Degrading Script Tags 
+ 
+/** http://ejohn.org/blog/degrading-script-tags**/
