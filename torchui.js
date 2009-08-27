@@ -1,15 +1,16 @@
 /** 
- * TorchUI Library v0.8
+ * TorchUI Library v0.1
  *
  * Copyright (c) 2009 Andrew Wilson
  * Licensed under MIT
  *
- * Date 2009-08-11
- * Revision 16
+ * Date 2009-08-26
+ * Revision 17
  * 
  */
 /****CONFIGURATION*****/
-var torchPath =  "../TorchUI/V.01b/current/";
+// Add a path that is the web path to the torchui.js 
+var torchPath =  "";
 var torchConfig = {
 	/*!! General Config !!*/
 	/*** The notify plugin is built with this setup, but does not have to be used.
