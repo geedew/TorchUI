@@ -1,10 +1,14 @@
 
 /* Javascript test file */
-
- $.torchui.title = "TorchUI Test File v.12";
- $.torchui.languageLoading = "Language File Loading...";
- $.torchui.loading = "Loading";
- $.torchui.pageLoading = "Page currently loading...";
+(function($w) {
+/* begin Variables */
+ $w.title = "TorchUI Test File v.2";
+ $w.languageLoading = "Language File Loading...";
+ $w.loading = "Loading";
+ $w.pageLoading = "Page currently loading...";
  
  /*Language Testing Variables */
- $.torchui.languageTitle = "Language Test Passed";
+ $w.languageTitle = "Language Test Passed";
+
+/* Add Closure*/
+})(jQuery.torchui.words);

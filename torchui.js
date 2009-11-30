@@ -1,13 +1,29 @@
 /** 
- * TorchUI Library v0.1
+ * TorchUI Library v0.8.5
  *
  * Copyright (c) 2009 Andrew Wilson
  * Licensed under MIT
  *
- * Date 2009-08-26
- * Revision 17
+ * @author Drew Wilson
+ * @email drew@geedew.com
+ * @updated 11-29-2009
  * 
  */
+
+/** 
+ * Setup Information
+ * 
+ * On the Template or HTML page you want to use TorchUI, add this code:
+ * 
+ * 
+ * <link rel="stylesheet" href="current/css/torchui-base.css" type="text/css" />
+ * <script src="current/torchui.js" type="text/javascript">({ Options })</script>
+ * 
+ * You can pass in all of your default configurations via the Object created within the 
+ * <script></script> tags... this is an easier way to customize, so this file need
+ * not be messed with. 
+ **/
+
 /****CONFIGURATION*****/
 // Add a path that is the web path to the torchui.js 
 var torchPath =  "";
@@ -31,6 +47,9 @@ var torchConfig = {
 		throttleLimit : 800, 
 		// Set the interval between ajax requires to give delays in the next action.
 		timerInterval : 200,
+		
+		// Set the timeout that is used for showing page loader */
+		timeToLoad : 15, // In Seconds
 		
 	/*!! Forms !!*/
 	/*** This will turn the next four features on or off, if they are all set to true ***/
@@ -112,6 +131,14 @@ var torchConfig = {
 		// Sets the language as "en".  Other default option is "es", matches text used above
 		currentLanguage : "en"
 };
+
+	
+/****************************************************************************/
+/***  Degrading Script Tags : http://ejohn.org/blog/degrading-script-tags ***/
+/***  This block must never be used in an embedded script                 ***/
+var userOptions = eval("(" + document.getElementsByTagName("script")[document.getElementsByTagName("script").length - 1].innerHTML + ")");
+/****************************************************************************/
+
 /*Load jQuery Library*/
 
 (function(){var l=this,g,y=l.jQuery,p=l.$,o=l.jQuery=l.$=function(E,F){return new o.fn.init(E,F)},D=/^[^<]*(<(.|\s)+>)[^>]*$|^#([\w-]+)$/,f=/^.[^:#\[\.,]*$/;o.fn=o.prototype={init:function(E,H){E=E||document;if(E.nodeType){this[0]=E;this.length=1;this.context=E;return this}if(typeof E==="string"){var G=D.exec(E);if(G&&(G[1]||!H)){if(G[1]){E=o.clean([G[1]],H)}else{var I=document.getElementById(G[3]);if(I&&I.id!=G[3]){return o().find(E)}var F=o(I||[]);F.context=document;F.selector=E;return F}}else{return o(H).find(E)}}else{if(o.isFunction(E)){return o(document).ready(E)}}if(E.selector&&E.context){this.selector=E.selector;this.context=E.context}return this.setArray(o.isArray(E)?E:o.makeArray(E))},selector:"",jquery:"1.3.2",size:function(){return this.length},get:function(E){return E===g?Array.prototype.slice.call(this):this[E]},pushStack:function(F,H,E){var G=o(F);G.prevObject=this;G.context=this.context;if(H==="find"){G.selector=this.selector+(this.selector?" ":"")+E}else{if(H){G.selector=this.selector+"."+H+"("+E+")"}}return G},setArray:function(E){this.length=0;Array.prototype.push.apply(this,E);return this},each:function(F,E){return o.each(this,F,E)},index:function(E){return o.inArray(E&&E.jquery?E[0]:E,this)},attr:function(F,H,G){var E=F;if(typeof F==="string"){if(H===g){return this[0]&&o[G||"attr"](this[0],F)}else{E={};E[F]=H}}return this.each(function(I){for(F in E){o.attr(G?this.style:this,F,o.prop(this,E[F],G,I,F))}})},css:function(E,F){if((E=="width"||E=="height")&&parseFloat(F)<0){F=g}return this.attr(E,F,"curCSS")},text:function(F){if(typeof F!=="object"&&F!=null){return this.empty().append((this[0]&&this[0].ownerDocument||document).createTextNode(F))}var E="";o.each(F||this,function(){o.each(this.childNodes,function(){if(this.nodeType!=8){E+=this.nodeType!=1?this.nodeValue:o.fn.text([this])}})});return E},wrapAll:function(E){if(this[0]){var F=o(E,this[0].ownerDocument).clone();if(this[0].parentNode){F.insertBefore(this[0])}F.map(function(){var G=this;while(G.firstChild){G=G.firstChild}return G}).append(this)}return this},wrapInner:function(E){return this.each(function(){o(this).contents().wrapAll(E)})},wrap:function(E){return this.each(function(){o(this).wrapAll(E)})},append:function(){return this.domManip(arguments,true,function(E){if(this.nodeType==1){this.appendChild(E)}})},prepend:function(){return this.domManip(arguments,true,function(E){if(this.nodeType==1){this.insertBefore(E,this.firstChild)}})},before:function(){return this.domManip(arguments,false,function(E){this.parentNode.insertBefore(E,this)})},after:function(){return this.domManip(arguments,false,function(E){this.parentNode.insertBefore(E,this.nextSibling)})},end:function(){return this.prevObject||o([])},push:[].push,sort:[].sort,splice:[].splice,find:function(E){if(this.length===1){var F=this.pushStack([],"find",E);F.length=0;o.find(E,this[0],F);return F}else{return this.pushStack(o.unique(o.map(this,function(G){return o.find(E,G)})),"find",E)}},clone:function(G){var E=this.map(function(){if(!o.support.noCloneEvent&&!o.isXMLDoc(this)){var I=this.outerHTML;if(!I){var J=this.ownerDocument.createElement("div");J.appendChild(this.cloneNode(true));I=J.innerHTML}return o.clean([I.replace(/ jQuery\d+="(?:\d+|null)"/g,"").replace(/^\s*/,"")])[0]}else{return this.cloneNode(true)}});if(G===true){var H=this.find("*").andSelf(),F=0;E.find("*").andSelf().each(function(){if(this.nodeName!==H[F].nodeName){return}var I=o.data(H[F],"events");for(var K in I){for(var J in I[K]){o.event.add(this,K,I[K][J],I[K][J].data)}}F++})}return E},filter:function(E){return this.pushStack(o.isFunction(E)&&o.grep(this,function(G,F){return E.call(G,F)})||o.multiFilter(E,o.grep(this,function(F){return F.nodeType===1})),"filter",E)},closest:function(E){var G=o.expr.match.POS.test(E)?o(E):null,F=0;return this.map(function(){var H=this;while(H&&H.ownerDocument){if(G?G.index(H)>-1:o(H).is(E)){o.data(H,"closest",F);return H}H=H.parentNode;F++}})},not:function(E){if(typeof E==="string"){if(f.test(E)){return this.pushStack(o.multiFilter(E,this,true),"not",E)}else{E=o.multiFilter(E,this)}}var F=E.length&&E[E.length-1]!==g&&!E.nodeType;return this.filter(function(){return F?o.inArray(this,E)<0:this!=E})},add:function(E){return this.pushStack(o.unique(o.merge(this.get(),typeof E==="string"?o(E):o.makeArray(E))))},is:function(E){return !!E&&o.multiFilter(E,this).length>0},hasClass:function(E){return !!E&&this.is("."+E)},val:function(K){if(K===g){var E=this[0];if(E){if(o.nodeName(E,"option")){return(E.attributes.value||{}).specified?E.value:E.text}if(o.nodeName(E,"select")){var I=E.selectedIndex,L=[],M=E.options,H=E.type=="select-one";if(I<0){return null}for(var F=H?I:0,J=H?I+1:M.length;F<J;F++){var G=M[F];if(G.selected){K=o(G).val();if(H){return K}L.push(K)}}return L}return(E.value||"").replace(/\r/g,"")}return g}if(typeof K==="number"){K+=""}return this.each(function(){if(this.nodeType!=1){return}if(o.isArray(K)&&/radio|checkbox/.test(this.type)){this.checked=(o.inArray(this.value,K)>=0||o.inArray(this.name,K)>=0)}else{if(o.nodeName(this,"select")){var N=o.makeArray(K);o("option",this).each(function(){this.selected=(o.inArray(this.value,N)>=0||o.inArray(this.text,N)>=0)});if(!N.length){this.selectedIndex=-1}}else{this.value=K}}})},html:function(E){return E===g?(this[0]?this[0].innerHTML.replace(/ jQuery\d+="(?:\d+|null)"/g,""):null):this.empty().append(E)},replaceWith:function(E){return this.after(E).remove()},eq:function(E){return this.slice(E,+E+1)},slice:function(){return this.pushStack(Array.prototype.slice.apply(this,arguments),"slice",Array.prototype.slice.call(arguments).join(","))},map:function(E){return this.pushStack(o.map(this,function(G,F){return E.call(G,F,G)}))},andSelf:function(){return this.add(this.prevObject)},domManip:function(J,M,L){if(this[0]){var I=(this[0].ownerDocument||this[0]).createDocumentFragment(),F=o.clean(J,(this[0].ownerDocument||this[0]),I),H=I.firstChild;if(H){for(var G=0,E=this.length;G<E;G++){L.call(K(this[G],H),this.length>1||G>0?I.cloneNode(true):I)}}if(F){o.each(F,z)}}return this;function K(N,O){return M&&o.nodeName(N,"table")&&o.nodeName(O,"tr")?(N.getElementsByTagName("tbody")[0]||N.appendChild(N.ownerDocument.createElement("tbody"))):N}}};o.fn.init.prototype=o.fn;function z(E,F){if(F.src){o.ajax({url:F.src,async:false,dataType:"script"})}else{o.globalEval(F.text||F.textContent||F.innerHTML||"")}if(F.parentNode){F.parentNode.removeChild(F)}}function e(){return +new Date}o.extend=o.fn.extend=function(){var J=arguments[0]||{},H=1,I=arguments.length,E=false,G;if(typeof J==="boolean"){E=J;J=arguments[1]||{};H=2}if(typeof J!=="object"&&!o.isFunction(J)){J={}}if(I==H){J=this;--H}for(;H<I;H++){if((G=arguments[H])!=null){for(var F in G){var K=J[F],L=G[F];if(J===L){continue}if(E&&L&&typeof L==="object"&&!L.nodeType){J[F]=o.extend(E,K||(L.length!=null?[]:{}),L)}else{if(L!==g){J[F]=L}}}}}return J};var b=/z-?index|font-?weight|opacity|zoom|line-?height/i,q=document.defaultView||{},s=Object.prototype.toString;o.extend({noConflict:function(E){l.$=p;if(E){l.jQuery=y}return o},isFunction:function(E){return s.call(E)==="[object Function]"},isArray:function(E){return s.call(E)==="[object Array]"},isXMLDoc:function(E){return E.nodeType===9&&E.documentElement.nodeName!=="HTML"||!!E.ownerDocument&&o.isXMLDoc(E.ownerDocument)},globalEval:function(G){if(G&&/\S/.test(G)){var F=document.getElementsByTagName("head")[0]||document.documentElement,E=document.createElement("script");E.type="text/javascript";if(o.support.scriptEval){E.appendChild(document.createTextNode(G))}else{E.text=G}F.insertBefore(E,F.firstChild);F.removeChild(E)}},nodeName:function(F,E){return F.nodeName&&F.nodeName.toUpperCase()==E.toUpperCase()},each:function(G,K,F){var E,H=0,I=G.length;if(F){if(I===g){for(E in G){if(K.apply(G[E],F)===false){break}}}else{for(;H<I;){if(K.apply(G[H++],F)===false){break}}}}else{if(I===g){for(E in G){if(K.call(G[E],E,G[E])===false){break}}}else{for(var J=G[0];H<I&&K.call(J,H,J)!==false;J=G[++H]){}}}return G},prop:function(H,I,G,F,E){if(o.isFunction(I)){I=I.call(H,F)}return typeof I==="number"&&G=="curCSS"&&!b.test(E)?I+"px":I},className:{add:function(E,F){o.each((F||"").split(/\s+/),function(G,H){if(E.nodeType==1&&!o.className.has(E.className,H)){E.className+=(E.className?" ":"")+H}})},remove:function(E,F){if(E.nodeType==1){E.className=F!==g?o.grep(E.className.split(/\s+/),function(G){return !o.className.has(F,G)}).join(" "):""}},has:function(F,E){return F&&o.inArray(E,(F.className||F).toString().split(/\s+/))>-1}},swap:function(H,G,I){var E={};for(var F in G){E[F]=H.style[F];H.style[F]=G[F]}I.call(H);for(var F in G){H.style[F]=E[F]}},css:function(H,F,J,E){if(F=="width"||F=="height"){var L,G={position:"absolute",visibility:"hidden",display:"block"},K=F=="width"?["Left","Right"]:["Top","Bottom"];function I(){L=F=="width"?H.offsetWidth:H.offsetHeight;if(E==="border"){return}o.each(K,function(){if(!E){L-=parseFloat(o.curCSS(H,"padding"+this,true))||0}if(E==="margin"){L+=parseFloat(o.curCSS(H,"margin"+this,true))||0}else{L-=parseFloat(o.curCSS(H,"border"+this+"Width",true))||0}})}if(H.offsetWidth!==0){I()}else{o.swap(H,G,I)}return Math.max(0,Math.round(L))}return o.curCSS(H,F,J)},curCSS:function(I,F,G){var L,E=I.style;if(F=="opacity"&&!o.support.opacity){L=o.attr(E,"opacity");return L==""?"1":L}if(F.match(/float/i)){F=w}if(!G&&E&&E[F]){L=E[F]}else{if(q.getComputedStyle){if(F.match(/float/i)){F="float"}F=F.replace(/([A-Z])/g,"-$1").toLowerCase();var M=q.getComputedStyle(I,null);if(M){L=M.getPropertyValue(F)}if(F=="opacity"&&L==""){L="1"}}else{if(I.currentStyle){var J=F.replace(/\-(\w)/g,function(N,O){return O.toUpperCase()});L=I.currentStyle[F]||I.currentStyle[J];if(!/^\d+(px)?$/i.test(L)&&/^\d/.test(L)){var H=E.left,K=I.runtimeStyle.left;I.runtimeStyle.left=I.currentStyle.left;E.left=L||0;L=E.pixelLeft+"px";E.left=H;I.runtimeStyle.left=K}}}}return L},clean:function(F,K,I){K=K||document;if(typeof K.createElement==="undefined"){K=K.ownerDocument||K[0]&&K[0].ownerDocument||document}if(!I&&F.length===1&&typeof F[0]==="string"){var H=/^<(\w+)\s*\/?>$/.exec(F[0]);if(H){return[K.createElement(H[1])]}}var G=[],E=[],L=K.createElement("div");o.each(F,function(P,S){if(typeof S==="number"){S+=""}if(!S){return}if(typeof S==="string"){S=S.replace(/(<(\w+)[^>]*?)\/>/g,function(U,V,T){return T.match(/^(abbr|br|col|img|input|link|meta|param|hr|area|embed)$/i)?U:V+"></"+T+">"});var O=S.replace(/^\s+/,"").substring(0,10).toLowerCase();var Q=!O.indexOf("<opt")&&[1,"<select multiple='multiple'>","</select>"]||!O.indexOf("<leg")&&[1,"<fieldset>","</fieldset>"]||O.match(/^<(thead|tbody|tfoot|colg|cap)/)&&[1,"<table>","</table>"]||!O.indexOf("<tr")&&[2,"<table><tbody>","</tbody></table>"]||(!O.indexOf("<td")||!O.indexOf("<th"))&&[3,"<table><tbody><tr>","</tr></tbody></table>"]||!O.indexOf("<col")&&[2,"<table><tbody></tbody><colgroup>","</colgroup></table>"]||!o.support.htmlSerialize&&[1,"div<div>","</div>"]||[0,"",""];L.innerHTML=Q[1]+S+Q[2];while(Q[0]--){L=L.lastChild}if(!o.support.tbody){var R=/<tbody/i.test(S),N=!O.indexOf("<table")&&!R?L.firstChild&&L.firstChild.childNodes:Q[1]=="<table>"&&!R?L.childNodes:[];for(var M=N.length-1;M>=0;--M){if(o.nodeName(N[M],"tbody")&&!N[M].childNodes.length){N[M].parentNode.removeChild(N[M])}}}if(!o.support.leadingWhitespace&&/^\s/.test(S)){L.insertBefore(K.createTextNode(S.match(/^\s*/)[0]),L.firstChild)}S=o.makeArray(L.childNodes)}if(S.nodeType){G.push(S)}else{G=o.merge(G,S)}});if(I){for(var J=0;G[J];J++){if(o.nodeName(G[J],"script")&&(!G[J].type||G[J].type.toLowerCase()==="text/javascript")){E.push(G[J].parentNode?G[J].parentNode.removeChild(G[J]):G[J])}else{if(G[J].nodeType===1){G.splice.apply(G,[J+1,0].concat(o.makeArray(G[J].getElementsByTagName("script"))))}I.appendChild(G[J])}}return E}return G},attr:function(J,G,K){if(!J||J.nodeType==3||J.nodeType==8){return g}var H=!o.isXMLDoc(J),L=K!==g;G=H&&o.props[G]||G;if(J.tagName){var F=/href|src|style/.test(G);if(G=="selected"&&J.parentNode){J.parentNode.selectedIndex}if(G in J&&H&&!F){if(L){if(G=="type"&&o.nodeName(J,"input")&&J.parentNode){throw"type property can't be changed"}J[G]=K}if(o.nodeName(J,"form")&&J.getAttributeNode(G)){return J.getAttributeNode(G).nodeValue}if(G=="tabIndex"){var I=J.getAttributeNode("tabIndex");return I&&I.specified?I.value:J.nodeName.match(/(button|input|object|select|textarea)/i)?0:J.nodeName.match(/^(a|area)$/i)&&J.href?0:g}return J[G]}if(!o.support.style&&H&&G=="style"){return o.attr(J.style,"cssText",K)}if(L){J.setAttribute(G,""+K)}var E=!o.support.hrefNormalized&&H&&F?J.getAttribute(G,2):J.getAttribute(G);return E===null?g:E}if(!o.support.opacity&&G=="opacity"){if(L){J.zoom=1;J.filter=(J.filter||"").replace(/alpha\([^)]*\)/,"")+(parseInt(K)+""=="NaN"?"":"alpha(opacity="+K*100+")")}return J.filter&&J.filter.indexOf("opacity=")>=0?(parseFloat(J.filter.match(/opacity=([^)]*)/)[1])/100)+"":""}G=G.replace(/-([a-z])/ig,function(M,N){return N.toUpperCase()});if(L){J[G]=K}return J[G]},trim:function(E){return(E||"").replace(/^\s+|\s+$/g,"")},makeArray:function(G){var E=[];if(G!=null){var F=G.length;if(F==null||typeof G==="string"||o.isFunction(G)||G.setInterval){E[0]=G}else{while(F){E[--F]=G[F]}}}return E},inArray:function(G,H){for(var E=0,F=H.length;E<F;E++){if(H[E]===G){return E}}return -1},merge:function(H,E){var F=0,G,I=H.length;if(!o.support.getAll){while((G=E[F++])!=null){if(G.nodeType!=8){H[I++]=G}}}else{while((G=E[F++])!=null){H[I++]=G}}return H},unique:function(K){var F=[],E={};try{for(var G=0,H=K.length;G<H;G++){var J=o.data(K[G]);if(!E[J]){E[J]=true;F.push(K[G])}}}catch(I){F=K}return F},grep:function(F,J,E){var G=[];for(var H=0,I=F.length;H<I;H++){if(!E!=!J(F[H],H)){G.push(F[H])}}return G},map:function(E,J){var F=[];for(var G=0,H=E.length;G<H;G++){var I=J(E[G],G);if(I!=null){F[F.length]=I}}return F.concat.apply([],F)}});var C=navigator.userAgent.toLowerCase();o.browser={version:(C.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/)||[0,"0"])[1],safari:/webkit/.test(C),opera:/opera/.test(C),msie:/msie/.test(C)&&!/opera/.test(C),mozilla:/mozilla/.test(C)&&!/(compatible|webkit)/.test(C)};o.each({parent:function(E){return E.parentNode},parents:function(E){return o.dir(E,"parentNode")},next:function(E){return o.nth(E,2,"nextSibling")},prev:function(E){return o.nth(E,2,"previousSibling")},nextAll:function(E){return o.dir(E,"nextSibling")},prevAll:function(E){return o.dir(E,"previousSibling")},siblings:function(E){return o.sibling(E.parentNode.firstChild,E)},children:function(E){return o.sibling(E.firstChild)},contents:function(E){return o.nodeName(E,"iframe")?E.contentDocument||E.contentWindow.document:o.makeArray(E.childNodes)}},function(E,F){o.fn[E]=function(G){var H=o.map(this,F);if(G&&typeof G=="string"){H=o.multiFilter(G,H)}return this.pushStack(o.unique(H),E,G)}});o.each({appendTo:"append",prependTo:"prepend",insertBefore:"before",insertAfter:"after",replaceAll:"replaceWith"},function(E,F){o.fn[E]=function(G){var J=[],L=o(G);for(var K=0,H=L.length;K<H;K++){var I=(K>0?this.clone(true):this).get();o.fn[F].apply(o(L[K]),I);J=J.concat(I)}return this.pushStack(J,E,G)}});o.each({removeAttr:function(E){o.attr(this,E,"");if(this.nodeType==1){this.removeAttribute(E)}},addClass:function(E){o.className.add(this,E)},removeClass:function(E){o.className.remove(this,E)},toggleClass:function(F,E){if(typeof E!=="boolean"){E=!o.className.has(this,F)}o.className[E?"add":"remove"](this,F)},remove:function(E){if(!E||o.filter(E,[this]).length){o("*",this).add([this]).each(function(){o.event.remove(this);o.removeData(this)});if(this.parentNode){this.parentNode.removeChild(this)}}},empty:function(){o(this).children().remove();while(this.firstChild){this.removeChild(this.firstChild)}}},function(E,F){o.fn[E]=function(){return this.each(F,arguments)}});function j(E,F){return E[0]&&parseInt(o.curCSS(E[0],F,true),10)||0}var h="jQuery"+e(),v=0,A={};o.extend({cache:{},data:function(F,E,G){F=F==l?A:F;var H=F[h];if(!H){H=F[h]=++v}if(E&&!o.cache[H]){o.cache[H]={}}if(G!==g){o.cache[H][E]=G}return E?o.cache[H][E]:H},removeData:function(F,E){F=F==l?A:F;var H=F[h];if(E){if(o.cache[H]){delete o.cache[H][E];E="";for(E in o.cache[H]){break}if(!E){o.removeData(F)}}}else{try{delete F[h]}catch(G){if(F.removeAttribute){F.removeAttribute(h)}}delete o.cache[H]}},queue:function(F,E,H){if(F){E=(E||"fx")+"queue";var G=o.data(F,E);if(!G||o.isArray(H)){G=o.data(F,E,o.makeArray(H))}else{if(H){G.push(H)}}}return G},dequeue:function(H,G){var E=o.queue(H,G),F=E.shift();if(!G||G==="fx"){F=E[0]}if(F!==g){F.call(H)}}});o.fn.extend({data:function(E,G){var H=E.split(".");H[1]=H[1]?"."+H[1]:"";if(G===g){var F=this.triggerHandler("getData"+H[1]+"!",[H[0]]);if(F===g&&this.length){F=o.data(this[0],E)}return F===g&&H[1]?this.data(H[0]):F}else{return this.trigger("setData"+H[1]+"!",[H[0],G]).each(function(){o.data(this,E,G)})}},removeData:function(E){return this.each(function(){o.removeData(this,E)})},queue:function(E,F){if(typeof E!=="string"){F=E;E="fx"}if(F===g){return o.queue(this[0],E)}return this.each(function(){var G=o.queue(this,E,F);if(E=="fx"&&G.length==1){G[0].call(this)}})},dequeue:function(E){return this.each(function(){o.dequeue(this,E)})}});
@@ -152,17 +179,22 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 
 	$.extend({
 		torchui : {
+				/* Hold the defaults of the program */
+				defaults : {},
 				//Load Default Configuration, just in case something is broke above//
 				path : torchPath,
 				 
-				
 				/** MANDATORY VARIABLES TO BE USED GLOBALLY WITHIN THE FUNCTIONS - DO NOT REMOVE**/
 				/* Holds the language variables */
-				languageStore : [],
+				languageStore : [],	
+					/* hold the variables to translate */
+					words : {}, 
 				/* Contains the scripts loaded with require */
 				scripts : [],
 				/*Holds timers for the require function */
 				timers : {},
+				/* Holds the amount of loading occurring */
+				pageLoading : 0,
 				/* Ajax Calls can be grouped so that they are syncrounous in their grouped settings */
 				groups : [] ,
 				/* All forms must be recorded so that we can manage them */
@@ -181,11 +213,11 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 					
 				
 				/*Add the jQueryUI Platform */
-				if($.torchui.usejQueryUI) {
+				if($.torchui.defaults.usejQueryUI) {
 					$.torchui.require($.torchui.path+ "js/global/jqueryui-1.7.1.js", { type: "js"});
 					$.torchui.require($.torchui.path+ "css/custom-theme/jquery-ui-1.7.1.custom.css", {type:"css"});
 				}
-				if($.torchui.useBrowserCSS) {
+				if($.torchui.defaults.useBrowserCSS) {
 					/*Browser Specifics */
 					switch($.browser) {
 						case "msie":
@@ -220,7 +252,7 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 				// Default Language on Initialize
 				$.language("en");
 				
-				if($.torchui.useNotifyPlugin) {
+				if($.torchui.defaults.useNotifyPlugin) {
 					/* Get and load the notify plugin */
 					$.torchui.require($.torchui.path+ "js/Notify/notify.js", { type: "js"});
 					$.torchui.require($.torchui.path+ "js/Notify/notify.css", { type: "css"});
@@ -229,21 +261,21 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 				$(document).ready(function() {		
 					/* After page is loaded, check for forms, and then load the custom inofrmation */
 					if($("form").length > 0) { 
-						if($.torchui.ajaxForms) 
+						if($.torchui.defaults.ajaxForms) 
 							/* Load the ajax forms plugin */
 							$.torchui.require($.torchui.path+ "js/forms/formplugin.js", { type: "js" });
-						if($.torchui.CMXForms) 
+						if($.torchui.defaults.CMXForms) 
 							/* Make FF forms work the way they should */
 							$.torchui.require($.torchui.path+ "js/forms/cmxforms.js", { type: "js" });
 							
-						if($.torchui.validateForms)
+						if($.torchui.defaults.validateForms)
 							/*Load the Validation File */
 							$.torchui.require($.torchui.path+ "js/forms/validate.js", { type: "js" });	
 									
-						if($.torchui.maskForms) 
+						if($.torchui.defaults.maskForms) 
 							/* Load the Masked Input file */
 							$.torchui.require($.torchui.path+ "js/forms/maskedinput.js", { type: "js" });			
-						if($.torchui.autoForms) 
+						if($.torchui.defaults.autoForms) 
 							/* Automatically load the forms with this above info */
 							$(document).delay(500,$.forms)
 					}
@@ -290,16 +322,12 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 							
 							/* Set the timer and allow a delay */
 							$(this).delay(options.delay,function() {
-								$.torchui.timers[path] = setInterval(function() {
 									$(document).ready(function() {
-										//alert(document.readyState);
-								//	if (/loaded|complete/.test(document.readyState)) {
 										clearInterval($.torchui.timers[path]);
 										options.callback(); // call the callback handler
 									});
-								}, options.interval)
 							});
-/*NEEDS A TIMEOUT!!!!*/	
+							
 								
 							/* No longer working in Safari | Chrome 
 							var el = document.createElement('script');
@@ -343,7 +371,8 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 	
 	
 	/* Load the defaults */
-	$.extend($.torchui, torchConfig);
+	/* userOptions are coming in from the embedded script tags */
+	$.extend($.torchui.defaults, torchConfig, userOptions);
 })(jQuery);
 
 
@@ -351,16 +380,10 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 /** Firebug Lite **/
 /**http://svn.jasonkarns.com/jquery/firebug/trunk/**/
 (function ($) {
-    /****************************************************************************/
-    /***  Degrading Script Tags : http://ejohn.org/blog/degrading-script-tags ***/
-    /***  This block must never be used in an embedded script                 ***/
-    /***  Determine Firebug options from this script tag                      ***/
-    var bootstrap = eval("(" + document.getElementsByTagName("script")[document.getElementsByTagName("script").length - 1].innerHTML + ")");
-	/****************************************************************************/
-
+	
     $.firebug = {
         defaults: {
-            debug: $.torchui.debug,
+            debug: $.torchui.defaults.debug,
             lite: {
 				override: false,
 				// absolute or relative (to document) URI
@@ -701,13 +724,13 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
     };
 	/* Allow for going in and out of debug mode */
 	$.torchui.toggleDebug = function() {
-		if($.torchui.debug) {
+		if($.torchui.defaults.debug) {
 			$.firebug.off();
-			$.torchui.debug = false;
+			$.torchui.defaults.debug = false;
 		} else {
-			$.torchui.debug = true;
+			$.torchui.defaults.debug = true;
 			
-			bootstrap = $.extend(true, {}, $.firebug.defaults, bootstrap);
+			bootstrap = $.extend(true, {}, $.firebug.defaults, $.torchui.defaults);
 
 			$.firebug.mountConsole(bootstrap);
 			/* !window.console will never be false because of $.firebug.off() */
@@ -718,7 +741,7 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 			
 			$.firebug.mountFirebug(bootstrap);
 		}
-		return $.torchui.debug;
+		return $.torchui.defaults.debug;
 	
 	} /* End toggleDebug(); */
 	
@@ -761,12 +784,12 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 	
 	
 	/* Overrite the issue with the problems of IE not using console on load. */
-	if(!$.torchui.debug) {
+	if(!$.torchui.defaults.debug) {
 		$.firebug.off();
 	} else {
-		if($.torchui.firebugLite) {
+		if($.torchui.defaults.firebugLite) {
 			$.firebug.off(); // To guarentee no crashes on console.
-			bootstrap = $.extend(true, {}, $.firebug.defaults, bootstrap);
+			bootstrap = $.extend(true, {}, $.firebug.defaults, $.torchui.defaults);
 
 			$.firebug.mountConsole(bootstrap);
 			/* !window.console will never be false because of $.firebug.off() */
@@ -791,11 +814,11 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 		language : function(word) {
 			return this.each(function() {
 				/* Check to see if we are wanting a variable */
-				if($.torchui[word] != null) {
+				if($.torchui.words[word] != null) {
 					var temparray = [ this, word ];
-					$(this).html($.torchui[word]);
+					$(this).html($.torchui.words[word]);
 					$.torchui.languageStore.push(temparray);
-					return $.torchui[word];
+					return $.torchui.words[word];
 				}
 			});
 		}
@@ -810,28 +833,36 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 			
 			/* Function that will set the current language */
 			var setLanguage = function(lang) {	
+								
 				var changeVariables = function() {
 					
 					/* We need to now change all of the variables that have been set with $().language */
 					if(lang == getLanguage()) {
 						/* The Language has changed, so loop through the variables and set */
 						for(variables in $.torchui.languageStore) {
+							if(!$.torchui.words[$.torchui.languageStore[variables][1]]) continue;
 							
-							if(!$.torchui[$.torchui.languageStore[variables][1]]) continue;
-								$.notify('changing var ' + $.torchui[$.torchui.languageStore[variables][1]], {
-									theme: 'debug'
-								});
+							$.notify('changing var ' + $.torchui.words[$.torchui.languageStore[variables][1]], {
+								theme: 'debug'
+							});
+							
 							try {
-								$($.torchui.languageStore[variables][0]).html($.torchui[$.torchui.languageStore[variables][1]]);
+								/* Attempt to change the language variable */
+								$($.torchui.languageStore[variables][0]).html($.torchui.words[$.torchui.languageStore[variables][1]]);
 							} catch(e) {
 								console.error(e);
 							}
 						}
 					}
+					/* Notify that the page is Loaded */
+					$.torchui.pageLoaded();
 				}
-				for(language in $.torchui.languages) {
-					if(lang == $.torchui.languages[language][0]) {
-						$.torchui.currentlanguage = lang;
+				
+				for(language in $.torchui.defaults.languages) {
+					
+					if(lang == $.torchui.defaults.languages[language][0]) {
+						
+						$.torchui.defaults.currentlanguage = lang;
 						/* Load the script file for the current language */
 						var options = {
 							callback : changeVariables,
@@ -842,27 +873,29 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 						$("#languageScript").remove();
 						
 						/* Notify of the page updating, Notice, Safari will default with an AJAX loading. */
-						if(!$.torchui.timers["loading"] && !$.browser.safari) { // Make sure only one shows up at the top
+						if(!$.browser.safari) { 
 							$.pageLoading();
 						}
-						$.torchui.require($.torchui.languages[language][1], options);
 						
-							/*Set the html language */
-							$("html").attr("lang",lang);
+						/* Require the new language file */
+						$.torchui.require($.torchui.defaults.languages[language][1], options);
+						
+						/*Set the html language */
+						$("html").attr("lang",lang);
 					}
 				}
 				
 				/* Check to see if we are just wanting a variable */
-				if($.torchui[lang] != null) {
-					return $.torchui[lang]; 
-				}
+				if($.torchui.words[lang] != null) 
+					return $.torchui.words[lang]; 
 				
+				/* Return the current language */
 				return getLanguage();
 			}
 			
 			/* Function that will get the current language */
 			var getLanguage = function() {
-				return $.torchui.currentlanguage;
+				return $.torchui.defaults.currentlanguage;
 			}
 			
 			/* Function that will add a language to the files */
@@ -890,48 +923,87 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 
 (function($) {
 	/** Give a function for the LOADING icon **/
+	/* The function immediately returns the function that can close the Page Loader */
 	$.extend({
+		pageLoader : {
+			start : function() {
+				return true; },
+			stop : function() {
+				return true; }
+		},
 		pageLoading : function() {
 			var settings  = {
 				wait : 1200,
-				interval : 40
+				interval : 500
 			}
-			$.extend(settings, arguments[0]);
+			$.extend({} , settings, arguments[0]);
 			
-			$.notify($.torchui.pageLoading, {
-				sticky: true,
-				showClose : false,
-				noHistory : true,
-				onOpen : function(elem, options) {
-					
-					// Check every 40 milliseconds for a return ajax 
-					$.torchui.timers["loading"] = setInterval(function() {
-						
-						if(!$.active) { // Check to see if the ajax is still running or not.
-							
-							var closeNotification = function() {
-								console.info('close fired');
-								$(elem).trigger("close"); // Trigger the close.
-								$.torchui.timers["loading"] = false;
-							}
-							setTimeout(closeNotification , settings.wait); // close the loading after 1.2 seconds... so they can at least see it.
-							clearInterval($.torchui.timers["loading"]);
-						};
-					}, settings.interval);
-					
+			
+			/** Function used to check whether a page is loading or not **/
+			var waitForLoad = 0;
+			var isPageLoaded = function() {
+				/* Check if the pageLoading has been decremented to 0 */
+				if($.torchui.pageLoading < 1) {
+					clearTimeout($.torchui.timers['loading']);
+					/* Page is Loaded, close Loader */
+					$.torchui.pageLoaded();
+					return true;
+				} else if(waitForLoad >= ($.torchui.defaults.timeToLoad*2)) {
+					/* Stop the loading after *default* 15 (30s/500ms) seconds */
+					clearTimeout($.torchui.timers['loading']);
+					/* Page is Loaded, close Loader */
+					$.torchui.pageLoaded();
+					return true;
 				}
-			});
-		},
-		pageLoaded : function() {
-			var settings  = {
-				
-			}
-			$.extend(settings, arguments[0]);
+				waitForLoad++;
+				return false;
+			};
 			
+			/* If the loading is not running, show the loading icon/text */
+			if($.torchui.pageLoading == 0) {
+				
+				/** Function used to close the loading feature **/
+				var pageLoaded = function() {
+					/* decrement the loading */
+					if(--$.torchui.pageLoading < 1 ) {
+						/* Set to 0, just in case */
+						$.torchui.pageLoading = 0;
+						console.debug("Page Loaded");
+						
+						if($.pageLoader.stop())
+							$($.pageLoader.loader).remove();
+					}
+					return true;
+				};
+				
+				/* Show the loading */
+				console.debug("Page Loading...");
+				
+				if($.pageLoader.start()) {
+					$.pageLoader.loader = $("<div />").html(""+$.torchui.words.pageLoading)
+						.css("position", "fixed")
+						.css("bottom", 0)
+						.css("fontWeight", "bold");
+					$("body").append($.pageLoader.loader); }
+				
+				/* Set a timer */
+				/* Check every *default* 500 milliseconds for the loading to finish */
+				$.torchui.timers['loading'] = setInterval(isPageLoaded, settings.interval);
+				
+				/* Set the close to a global var */
+				$.torchui.pageLoaded = pageLoaded;
+			} 
+			
+			
+			/* increment the loading */
+			$.torchui.pageLoading++;
+			
+			/* Return the function that will close the Page Loading when it's done */
+			return $.torchui.pageLoaded;
 			
 		},
 		debug : function() {
-			if($.torchui.debug) {
+			if($.torchui.defaults.debug) {
 				$.notify(arguments[0]);
 				console.log(arguments[0]);
 			}
@@ -954,7 +1026,7 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 		/* First add some options to this special ajax call */
 		var elem = {
 			buffer : true,
-			initialWait : $.torchui.initialBufferWait // 800ths of a second, Notice, this can be overwritten per ajax call.
+			initialWait : $.torchui.defaults.initialBufferWait // 800ths of a second, Notice, this can be overwritten per ajax call.
 		};
 		/* Extend the options so elem gets the new settings */
 		$.extend(elem, options);
@@ -1034,13 +1106,14 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 		
 		/* default ajax start handlers */
 		console.log("ajaxStart");
-		if(!$.torchui.timers["loading"]) { // Make sure only one shows up at the top
-			$.pageLoading();
-		}
+		/* Show that the page is loading */
+		$.pageLoading();
 	  });
 	  
 	 $(document).ajaxStop(function() {
 		$.debug("Ajax Call Complete");
+		/* Stop the page loading */
+		$.torchui.pageLoaded();
 	  });
 	  
 	  $(document).ajaxError(function() {
@@ -1065,7 +1138,7 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
  *
  */
 (function($) {
-	if($.torchui.usejQueryUI) {
+	if($.torchui.defaults.usejQueryUI) {
 		
 		var defaults = {
 				autoOpen: false,
@@ -1089,7 +1162,7 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 					/* get the defaults from above */
 					
 					if(argument && (typeof argument != "string"))
-						$.extend(defaults, $.torchui.dialogSettings, argument);
+						$.extend(defaults, $.torchui.defaults.dialogSettings, argument);
 					$(this).dialog(defaults);
 				});
 			}
@@ -1129,7 +1202,7 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
  */
 (function($) {
 	$.torchui.validate = function() {
-		var defaults = $.extend({}, $.torchui.validateSettings, arguments[0]);
+		var defaults = $.extend({}, $.torchui.defaults.validateSettings, arguments[0]);
 		
 	};
 	
@@ -1162,15 +1235,15 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 				if((!$.torchui.forms[this] || options.reload) || options.current == "form") {
 					$.torchui.forms[this] = $(this);
 					
-					if($.torchui.maskForms) {
+					if($.torchui.defaults.maskForms) {
 						var elem = this;
-						$($.torchui.maskConfig).each(function() {
+						$($.torchui.defaults.maskConfig).each(function() {
 							$(elem).find(this[0]).mask(this[1]);
 						});
 					}
 					
 					/* Setup the ajax to run on the form */
-					if(!$(this).hasClass($.torchui.ajaxFormsOff)) {
+					if(!$(this).hasClass($.torchui.defaults.ajaxFormsOff)) {
 						/* Setup ajax form submit */
 						$(this).submit(function() {
 							var elem = this; /* provide scope*/
@@ -1192,6 +1265,8 @@ if (!Array.prototype.indexOf){Array.prototype.indexOf=function(val,fromIndex){if
 			return true;
 		}
 	}
+	
+	
 })(jQuery);
 
-$.torchui._init();
+jQuery.torchui._init();

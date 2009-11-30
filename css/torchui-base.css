@@ -1,3 +1,12 @@
+/** TorchUI Base CSS
+ *
+ *  Puts the global CSS into place for the rest of the framework to rely on.
+ *  @author Drew Wilson
+ *  @email drew@geedew.com
+ *  @updated 11/29/2009
+ *
+ **/
+
 /* RESET CSS - http://meyerweb.com/eric/tools/css/reset/   v1.0 | 20080212  */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}/* remember to define focus styles!  */:focus{outline:0}/* remember to highlight inserts somehow!  */ins{text-decoration:none}del{text-decoration:line-through}/* tables still need 'cellspacing="0"' in the markup  */table{border-collapse:collapse;border-spacing:0}
 /* BUILD CSS - Copyright (c) 2008, Yahoo! Inc. All rights reserved.
@@ -13,6 +22,8 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;font-size:13px;color: #666
 /* 960 Grid System ~ Core CSS.
     Learn more ~ http://960.gs/
     Licensed under GPL and MIT. */
+    /* Edited for TorchUI by Andrew Wilson */
+    /* Only Grid 12 is used */
 .container_12 {margin-left:auto;margin-right:auto;width:960px}.grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10,.grid_11,.grid_12{display:inline;float:left;margin-left:10px;margin-right:10px}.container_12 .grid_3{width:220px}.container_12 .grid_6{width:460px}.container_12 .grid_9{width:700px}.container_12 .grid_12{width:940px}.alpha{margin-left:0}.omega{margin-right:0}.container_12 .grid_1{width:60px}.container_12 .grid_2{width:140px}.container_12 .grid_4{width:300px}.container_12 .grid_5{width:380px}.container_12 .grid_7{width:540px}.container_12 .grid_8{width:620px}.container_12 .grid_10{width:780px}.container_12 .grid_11{width:860px}.container_12 .prefix_3{padding-left:240px}.container_12 .prefix_6{padding-left:480px}.container_12 .prefix_9{padding-left:720px}.container_12 .prefix_1{padding-left:80px}.container_12 .prefix_2{padding-left:160px}.container_12 .prefix_4{padding-left:320px}.container_12 .prefix_5{padding-left:400px}.container_12 .prefix_7{padding-left:560px}.container_12 .prefix_8{padding-left:640px}.container_12 .prefix_10{padding-left:800px}.container_12 .prefix_11{padding-left:880px}.container_12 .suffix_3{padding-right:240px}.container_12 .suffix_6{padding-right:480px}.container_12 .suffix_9{padding-right:720px}.container_12 .suffix_1{padding-right:80px}.container_12 .suffix_2{padding-right:160px}.container_12 .suffix_4{padding-right:320px}.container_12 .suffix_5{padding-right:400px}.container_12 .suffix_7{padding-right:560px}.container_12 .suffix_8{padding-right:640px}.container_12 .suffix_10{padding-right:800px}.container_12 .suffix_11{padding-right:880px}html body div.clear:after{clear:both;content:'.';display:block;visibility:hidden;height:0}html body div.clear{display:block}* html body div.clear{height:1%}
 
 
@@ -27,7 +38,37 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;font-size:13px;color: #666
 /* Hide any element that needs hidden */
 .hide {
 	display:none; }
+	
+	
+	
 
+/*! HTML 5 Base Styling !*/
+
+header, section, aside, nav, article, figure, footer {
+	display:block;
+	margin:0;
+	padding:0; }
+
+header {
+	vertical-align:top;}
+footer {
+	vertical-align:bottom;}
+nav {
+	float:left;
+	padding:1em;
+	clear:both;
+	width:100%; }
+article {
+	float:left;
+	margin-left:1em;
+	padding:0 0.5em; }
+aside {
+	float:left;
+	margin-left:1em;
+	padding-left:0.9em;}
+	
+	
+	
 /*!
  * NOTIFICATIONS CSS
  !*/
@@ -193,6 +234,9 @@ form em {
 	color: #f00; }
 
 /*! / END FORMS !*/	
+
+
+
 	
 
 

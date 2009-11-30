@@ -1,10 +1,15 @@
 
- $.torchui.title = "Examino del TorchUI  v.12";
- $.torchui.languageLoading = "Archivo de idioma de carga...";
- $.torchui.loading = "Cargando";
- $.torchui.pageLoading = "Actualmente, la página se está cargando...";
+/* Javascript test file */
+(function($w) {
+/* begin Variables */
+ $w.title = "Examino del TorchUI  v.2";
+ $w.languageLoading = "Archivo de idioma de carga...";
+ $w.loading = "Cargando";
+ $w.pageLoading = "Actualmente, la página se está cargando...";
  
  /*Language Testing Variables */
- $.torchui.languageTitle = "Aprobada la prueba de idioma";
+ $w.languageTitle = "Aprobada la prueba de idioma";
 
 
+/* Add Closure*/
+})(jQuery.torchui.words);

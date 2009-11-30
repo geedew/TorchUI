@@ -1,29 +1,21 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
+<!-- HTML 5 DocType -->
+
 <html lang="en">
 <!-- This is a test html for the TorchUI framework -->
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>TorchUI Test File</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>TorchUI: jQuery JavaScript Library</title>
 
-<link rel="stylesheet" href="current/css/torchui-base.css" type="text/css" />
-<link type="text/css" href="current/css/custom-theme/jquery-ui-1.7.1.custom.css" rel="stylesheet" />
+	<!-- This should ideally be the only css file that is necessary, as it uses import to get the other sites CSS -->
+	<link rel="stylesheet" href="site.css" type="text/css" />
+	<script src="torchui.js" type="text/javascript">({debug:true, firebugLite:false, useNotifyPlugin: false})</script>
+	<link rel="shortcut icon"  type="image/x-icon"  href="" />
 
-<style type="text/css">
-	div.box { padding: 5px; margin:5px; border: solid 1px #d4d4d4; }
-	dt { font-weight:bold; }
-	dd { font-style: italic; }
-	ol dl { margin: 0px; }
-</style>
-
-<script src="current/torchui.js" type="text/javascript">({debug:$.torchui.debug,lite:{minimized:true}})</script>
-
-
-<link rel="shortcut icon"  type="image/x-icon"  href="" />
-
-<!--  Force IE8 to Render in IE7 Mode -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<!--  Force IE8 to Render in IE7 Mode -->
+	<!--  While it's hard to condone this, it is a very effective way to minimize you're development time -->
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 </head>
 <body>
 <div class="container_12">

@@ -27,7 +27,16 @@ Table of Contents :
 ---  INSTALLING
 --------------------
 
-Currently, the most simple way to explain how to 
+Currently, the most simple way to explain how to install is to drop the files into your root path of a website, and then include them like this, 
+
+
+	<link rel="stylesheet" href="site.css" type="text/css" />
+	<script src="torchui.js" type="text/javascript">({debug:false,lite:{minimized:true}})</script>
+
+between the <head></head> tags of the html document.  Notice, you CAN pass the options for torchui within the script tags as long as it is in the object form shown.
+
+jQuery is NOT required to be seperate, it's best to treat TorchUI as your jQuery installation.
+
 --------------------
 ---  CONFIGURING
 --------------------
@@ -39,7 +48,7 @@ Configuring can be found at the top of the TorchUI.js file... It's all there and
 --------------------
 ---  PLUGINS UTILIZED
 --------------------
-
+* jQuery 1.3.2- DO NOT INSTALL SEPARATE, SIMPLY TREAT TORCHUI AS YOUR JQUERY, EVERYTHING WILL WORK FINE.
 * Firebug Lite -http://svn.jasonkarns.com/jquery/firebug/trunk/
 * Notify JS -http://alldorks.com/wordpress/notify
 * CMXForms

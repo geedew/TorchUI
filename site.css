@@ -1,0 +1,38 @@
+/** TorchUI Site CSS 
+ *
+ *  Abstract the importing, so that it is easier to implement in seperate sites.
+ *  @author Drew Wilson
+ *  @email drew@geedew.com
+ *  @updated 11/29/2009
+ *
+ **/
+
+
+/**
+ * Importing the CSS Framework 
+ *
+ * While some developers are concerned with IE6, I am not.  Because of this, I have started to no longer 'bend' to the backward
+ * compatible nuiances of the browser, and choose to better support maintainability and ease of programming, that said, I will
+ * keep comments in the code for fixing IE6 if that is something you are wanting to support  */
+ 
+ /** IE6 WARNING */
+ /* You cannot use the media tag *screen* below for IE6.  If you need to use IE6, remove this tag. If you need a media
+  * declaration, use <script> tags from the html files you need it */
+  
+/* Bring in the TorchUI Framework */
+	@import url("css/torchui-base.css") screen; /* Not IE6 Compatible, remove the media tag if concerned */
+
+/* Bring in the jQuery UI Framework */
+	@import url("css/custom-theme/jquery-ui-1.7.1.custom.css") screen;/* Not IE6 Compatible, remove the media tag if concerned */
+
+
+/* Add the Custom UI Framework for the site */
+/* Either just start adding the css directly, or import the files you are looking to use */
+
+	div.box { padding: 5px; margin:5px; border: solid 1px #d4d4d4; }
+	dt { font-weight:bold; }
+	dd { font-style: italic; }
+	ol dl { margin: 0px; }
+
+
+/* End the CSS File */
