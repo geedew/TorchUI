@@ -6,7 +6,8 @@
  *
  * @author Drew Wilson
  * @email drew@geedew.com
- * @updated 11-29-2009
+ * @updated 11-30-2009
+ * @version 0.8.6
  * 
  */
 

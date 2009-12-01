@@ -1,6 +1,17 @@
 <!DOCTYPE HTML>
 <!-- HTML 5 DocType -->
-
+<!--/** 
+ * TorchUI Library v0.8.6
+ *
+ * Copyright (c) 2009 Andrew Wilson
+ * Licensed under MIT
+ *
+ * @author Drew Wilson
+ * @email drew@geedew.com
+ * @updated 11-30-2009
+ * @version 0.8.6
+ * 
+ */-->
 <html lang="en">
 <!-- This is a test html for the TorchUI framework -->
 
@@ -18,235 +29,244 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 </head>
 <body>
-<div class="container_12">
-	<div class="grid _8 prefix_1 suffix_1">
+<div class="container">
+	<header class="grid_10 prefix_1 suffix_1">
 		<h1> Torch UI </h1>
-		<h3> by Andrew Wilson (drew@geedew.com)</h3>
-	</div>
-	
-	<div class="grid _8 prefix_1 suffix_1">
-		<div class="box" id="tableOfContents">
+		<h5> by Andrew Wilson (drew@geedew.com)</h5>
+	</header>
+</div>
+
+<div class="container">
+	<aside class="grid_4">
 			<h1>Table of Contents</h1>
-			<dl>
+			<nav><dl>
 				<dt><a href="#global">Global Functions</a></dt><dd>Functions that can change the current working environment.</dd>
 				<dt><a href="#language">Language Functions</a></dt><dd>Functions that can add or change the langauge.</dd>
 				<dt><a href="#notifications">Notification Functions</a></dt><dd>Functions that are used to pass updates or notifications to the user.</dd>
 				<dt><a href="#ajax">Ajax Functions</a></dt><dd>Functions that get and load data from a remote source.</dd>
-			</dl>
-		</div>
-	</div>
+			</dl></nav>
+	</aside>
 
-	<div class="grid _8 prefix_1 suffix_1">
-		<div class="box" id="global">
-			<dl>
-				<dt><h1>Global Varibles &amp; Functions</h1></dt>
-				<dt>Default Settings</dt><dd>
-				The code is loaded with default settings.  Many of them will take care of things like colors, sizes, positioning 
-				on the page so that it will conform with the standards outlines in the Coventry style guide.  It is best to not attempt
-				to make the page look like it should, as this should already have been taken care of for you.  Any questions, please ask
-				or email the Designer in charge.				
-				</dd>
-				<dt>$.torchui.debug</dt><dd> true | false : allows to turn debug mode on or off at any time.</dd>
-				<dd>
-					<div id="debugTest">
-						<h3> Debug mode is <span>not working</span></h3>
-						<a href="javascript: void(null);">Turn On Debug</a>
-					</div>
-					<script type="text/javascript">
-						$(document).ready(function() {
-							$("#debugTest a").click(function() {
-								if($.torchui.toggleDebug()) {
+	<section class="grid_8">
+	
+		<article id="global">
+			<header>
+				<h1>Global Variables &amp; Functions</h1>
+			</header>
+				<dl>
+					<dt>Default Settings</dt><dd>
+					The code is loaded with default settings.  Many of them will take care of things like colors, sizes, positioning 
+					on the page so that it will conform with the standards outlines in the Coventry style guide.  It is best to not attempt
+					to make the page look like it should, as this should already have been taken care of for you.  Any questions, please ask
+					or email the Designer in charge.				
+					</dd>
+					<dt>$.torchui.debug</dt><dd> true | false : allows to turn debug mode on or off at any time.</dd>
+					<dd>
+						<div id="debugTest">
+							<h3> Debug mode is <span>not working</span></h3>
+							<a href="javascript: void(null);">Turn On Debug</a>
+						</div>
+						<script type="text/javascript">
+							$(document).ready(function() {
+								$("#debugTest a").click(function() {
+									if($.torchui.toggleDebug()) {
+										$("#debugTest span").text("On");
+										$(this).text("Turn Off Debug");
+									} else {
+										$("#debugTest span").text("Off");
+										$(this).text("Turn On Debug");
+									}
+								});
+								if($.torchui.debug) {
 									$("#debugTest span").text("On");
-									$(this).text("Turn Off Debug");
+									$("#debugTest a").text("Turn Off Debug");
 								} else {
 									$("#debugTest span").text("Off");
-									$(this).text("Turn On Debug");
+									$("#debugTest a").text("Turn On Debug");
 								}
 							});
-							if($.torchui.debug) {
-								$("#debugTest span").text("On");
-								$("#debugTest a").text("Turn Off Debug");
-							} else {
-								$("#debugTest span").text("Off");
-								$("#debugTest a").text("Turn On Debug");
-							}
-						});
-					</script>
-				</dd>
-			</dl>
-		</div>
-		<div class="clear">&nbsp;</div>
-		<a href="#tableOfContents">back to top</a>
-	</div>
-
-	<div class="grid _8 prefix_1 suffix_1">
-		<div class="box" id="language">
-			<dl>
-				<dt><h1>Language Functions</h1></dt>
-				<dt>$.language()</dt><dd>Returns current language</dd>
-				<dt>$.language(VAR)</dt><dd>VAR : Language name (ex: "en")</dd><dd>Sets the language to use the VAR language passed</dd>
-				<dt>$.language(VAR)</dt><dd>VAR : Variable name (ex: "mytitle")</dd><dd>Returns the varible value in the current langauge, if no value is present, the current language will be returned.</dd>
-				<dt>$.language(VAR, PATH)</dt><dd>VAR : Language name (ex: "en")</dd><dd>PATH : The absolute web path of the file to include (can be an appropriately formatted service url).</dd><dd>Add the language file, and set to this language</dd>
-				<dt>$(OBJECT[S]).language(VAR)</dt><dd>VAR : Variable name (ex: "mytitle")</dd><dd>OBJECT[s] : Get list of objects using CSS styled selecting (ex: "#myid div.myclass")</dd><dd>Sets the inner html of the object to the var</dd>
-			</dl>
-			<div class="box" id="languageTest">
-				<h1 class="title">Language Test Failed</h1>
-				<select id="changelang" onchange="$.language(this.value);">
-					<option value="en">English</option>
-					<option value="es">Espanol</option>
-				</select>
-			</div>
-		</div>
-		<div class="clear">&nbsp;</div>
-		<a href="#tableOfContents">back to top</a>
-	</div>
-
-	<div class="grid _8 prefix_1 suffix_1">
-		<div class="box" id="notifications">
-			<dl>
-				<dt><h1>Notification Functions</h1></dt>
-				<dt>$.notify(STRING)</dt><dd>Puts a notification onto the page using all default values.</dd>
-				<dt>$.notify(STRING, { NAME:VALUE , ...})</dt><dd>NAME : This is the name of an option</dd><dd>VALUE : This is the value of the option</dd><dd>Creates a notification using optional parameters</dd>
-				<dt><h1>Notification Options</h1></dt>
-				<dt>theme</dt>
-					<dd>"message" : Sets the notification to the theme of a message type.  This will display an evelope next to the message passed.</dd>
-					<dd>"loading" : This creates a loading notification into the top corner.</dd>
-					<dd>"debug" : This will set the message to be only shown while in debugging mode</dd>
-					<dd>"success" : This is to show a success message</dd>
-					<dd>"error" : This is to show an error message</dd>
-				<dt>sticky</dt>
-					<dd> true | false : This will make the notification 'sticky' meaning it will not dissapear on it's own, it must be clsoed</dd>
-				<dt>life</dt>
-					<dd> MilliSeconds : This is how many milliseconds the notification will live (ex : 3000 = 3 seconds)</dd>
-				<dt>header</dt>
-					<dd> STRING : This is an optional Header.  It will display above the message and bold</dd>
-				<dt>beforeOpen</dt>
-					<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run before the notification is opened.</dd>
-				<dt>open</dt>
-					<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run when the notification is opened.</dd>
-				<dt>beforeClose</dt>
-					<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run before the notification is closed.</dd>
-				<dt>close</dt>
-					<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run when the notification is closed.</dd>
-			</dl>
-		</div>
-		<div class="clear">&nbsp;</div>
-		<a href="#tableOfContents">back to top</a>
-	</div>
-
-	<div class="grid _8 prefix_1 suffix_1">
-		<div class="box" id="ajax">
-			<dl>
-				<dt><h1>Ajax Options</h1></dt>
-					<dt>global</dt><dd> true | false : this option is by default true, but you can turn off the global functions by setting it to false.
-					**WARNING** Much functionality is handled globally by TorchUI, turn this off at your own risk **WARNING**</dd>
-					<dt>timeout</dt><dd>  MilliSeconds : Default is 2500 ms so that the Ajax call will timeout after 2.5 seconds of no response.</dd>
-					<dt>cache</dt><dd>  true | false : Defaults to true.  This tells the browser whether to cache the information or not.</dd>
-					<dt>url</dt><dd>  String (Required) : this points to a fully qualified path to a resource.</dd>
-					<dt>dataType</dt> 
-					    <dd>* "xml": Returns a XML document that can be processed via jQuery.</dd>
-						<dd>* "html": Returns HTML as plain text; included script tags are evaluated when inserted in the DOM.</dd>
-						<dd>* "script": Evaluates the response as JavaScript and returns it as plain text. Disables caching unless option "cache" is used. Note: This will turn POSTs into GETs for remote-domain requests.</dd>
-						<dd>* "json": Evaluates the response as JSON and returns a JavaScript Object.</dd>
-						<dd>* "jsonp": Loads in a JSON block using JSONP. Will add an extra "?callback=?" to the end of your URL to specify the callback.</dd>
-						<dd>* "text": A plain text string.</dd>
-						<dd>Default is set to "json".</dd>
-					<dt>data</dt><dd>Data to be sent to the server. It is converted to a query string, if not already a string. It's appended to the url for GET-requests. See processData option to prevent this automatic processing. Object must be Key/Value pairs. If value is an Array, jQuery serializes multiple values with same key i.e. {foo:["bar1", "bar2"]} becomes '&foo=bar1&foo=bar2'.</dd>
-					<dt>group</dt><dd>String : Assigning a group will then allow buffering of the groups. Meaining that the ajax calls are called one after another, after the previous call completes.</dd>
-					<dt>initialWait</dt><dd>MilliSeconds : Default is 800. This is used in the grouping of the ajax calls. The time will determine the length that is used to wait between the calls so they are properly throttled.</dd>
-				<dt><h1>Ajax Return Functions</h1></dt>
-					<dt>success</dt><dd>this is the function that will be called if the ajax is returned successful</dd>
-					<dt>error</dt><dd>this is the function that will be called if the ajax is returned as an error</dd>
-					<dt>complete</dt><dd>this is the function that will be called when the success or error is completed</dd>
-				<dt><h1>Ajax Functions</h1></dt>
-					<dt>$.ajax()</dt><dd>Sends an ajax call using all of the default options. This function will fail.</dd>
-					<dt>$.ajax({options})</dt><dd>The options must have {url: "String"} at the very least.</dd>
-						<dd><b>Example</b>: $.ajax({ url: "access/some/account.do", timeout:5000, success : function(data){ doThis(data); } });</dd>
-				<dt><h1>Ajax Interfaces</h1></dt>
-					<dd>All ajax calls that are using the "json" data type will be subject to the interface requirements explained below.</dd>
-					<dt>Response</dt>
-						<dd>All responses will be an array.</dd>
-						<dd>The array will have 1 or more objects.</dd>
-						<dd>Each object will contain "type" and "value".  Optionally a "callback" can be used.</dd>
-						<dd> Type defaults to 1 = success and 0 = false.  Optionally you can specify others like "message" or "system failure"</dd>
-						<dd><b>Example Response from server:</b>
-							[ { type: 1, value : "You have successfully added a user" } ] </dd>
-						<dd>The response is held in an array so that multiple responses can be sent through single call if necessary.</dd>
-				
+						</script>
+					</dd>
 				</dl>
-		</div>
-		<div class="clear">&nbsp;</div>
-		<a href="#tableOfContents">back to top</a>
-	</div>
-	<div id="dialogs">
-		<a href="javascript: void(null);" id="dialogbutton">Open Dialog</a>
-		<div title="this is my test this is my test this is my test this is my test" id="dialogtest">
-		 This is a div dialog test. This is a div dialog test. This is a div dialog test. This is a div dialog test. This is a div dialog test.
-		</div>
-	</div>
+				
+			<div class="clear">&nbsp;</div>
+			<footer><a href="#tableOfContents">back to top</a></footer>
+		</article>
+		
+		<article id="language">
+			
+				<dl>
+					<dt><h1>Language Functions</h1></dt>
+					<dt>$.language()</dt><dd>Returns current language</dd>
+					<dt>$.language(VAR)</dt><dd>VAR : Language name (ex: "en")</dd><dd>Sets the language to use the VAR language passed</dd>
+					<dt>$.language(VAR)</dt><dd>VAR : Variable name (ex: "mytitle")</dd><dd>Returns the varible value in the current langauge, if no value is present, the current language will be returned.</dd>
+					<dt>$.language(VAR, PATH)</dt><dd>VAR : Language name (ex: "en")</dd><dd>PATH : The absolute web path of the file to include (can be an appropriately formatted service url).</dd><dd>Add the language file, and set to this language</dd>
+					<dt>$(OBJECT[S]).language(VAR)</dt><dd>VAR : Variable name (ex: "mytitle")</dd><dd>OBJECT[s] : Get list of objects using CSS styled selecting (ex: "#myid div.myclass")</dd><dd>Sets the inner html of the object to the var</dd>
+				</dl>
+				<div class="box" id="languageTest">
+					<h1 class="title">Language Test Failed</h1>
+					<select id="changelang" onchange="$.language(this.value);">
+						<option value="en">English</option>
+						<option value="es">Espanol</option>
+					</select>
+				</div>
+			
+			<div class="clear">&nbsp;</div>
+			<footer><a href="#tableOfContents">back to top</a></footer>
+		</article>
 	
+		<article id="notifications">
+				<dl>
+					<dt><h1>Notification Functions</h1></dt>
+					<dt>$.notify(STRING)</dt><dd>Puts a notification onto the page using all default values.</dd>
+					<dt>$.notify(STRING, { NAME:VALUE , ...})</dt><dd>NAME : This is the name of an option</dd><dd>VALUE : This is the value of the option</dd>
+					<dd>Creates a notification using optional parameters</dd>
+					<dt><h1>Notification Options</h1></dt>
+					<dt>theme</dt>
+						<dd>"message" : Sets the notification to the theme of a message type.  This will display an evelope next to the message passed.</dd>
+						<dd>"loading" : This creates a loading notification into the top corner.</dd>
+						<dd>"debug" : This will set the message to be only shown while in debugging mode</dd>
+						<dd>"success" : This is to show a success message</dd>
+						<dd>"error" : This is to show an error message</dd>
+					<dt>sticky</dt>
+						<dd> true | false : This will make the notification 'sticky' meaning it will not dissapear on it's own, it must be clsoed</dd>
+					<dt>life</dt>
+						<dd> MilliSeconds : This is how many milliseconds the notification will live (ex : 3000 = 3 seconds)</dd>
+					<dt>header</dt>
+						<dd> STRING : This is an optional Header.  It will display above the message and bold</dd>
+					<dt>beforeOpen</dt>
+						<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run before the notification is opened.</dd>
+					<dt>open</dt>
+						<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run when the notification is opened.</dd>
+					<dt>beforeClose</dt>
+						<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run before the notification is closed.</dd>
+					<dt>close</dt>
+						<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run when the notification is closed.</dd>
+				</dl>
+			
+			<div class="clear">&nbsp;</div>
+			<footer><a href="#tableOfContents">back to top</a></footer>
+		</article>
 	
-	
-	<div class="grid _8 prefix_1 suffix_1">
-		<div class="box" id="forms">
-			<dl>
-				<dt><h1>Form Test</h1></dt>
-				<dt><h1>Callbacks</h1></dt>
-					<dd>Forms will automatically become ajax'd unless they have the class 'noajax'</dd>
-					<dd>To catch special actions, if any upon return, create a function like this to catch the 'callback'</dd>
-					<dd>$("#formID").bind("callbak", function(event, data) {  })  Where Data is the returned data if successful.</dd>
-				<dt>
-					<form id="test_form" action="" method="post">
-					<fieldset>
-					<legend>Test Form</legend>
-						<ol>
-						<li>
-						<label for="username">Username:<em>*</em></label>
-						<input type="text" id="username" name="username" class="username" />
-						</li><li>
-						
-						<label for="password">Password:<em>*</em></label>
-						<input type="password" id="password" name="password" class="password" />
-						</li><li>
-						
-						<label for="email">Email:<em>*</em></label>
-						<input type="text" id="email" name="email" class="email" />
-						</li><li>
-						
-						<label for="phone">Phone Number:<em>*</em></label>
-						<input type="text" id="phone" name="phone" class="phone"/>
-						</li><li>
-						
-						<label for="zip">Zip Code:</label>
-						<input type="text" id="postal" name="postal"class="postal" />
-						</li><li>
-						
-						<label for="firstname">First Name:<em>*</em></label>
-						<input type="text" id="firstname" name="firstname" class="namefield" />
-						</li><li>
-						
-						<label for="lastname">Last Name:</label>
-						<input type="text" id="lastname" name="lastname" class="namefield" />
-						</li><li>
-						
-						<label for="dob">Date Of Birth:<em>*</em></label>
-						<input type="text" id="dob" name="dob" class="dob" />
-						</li><li>
-						
-						<label for="comments">Comments:<em>*</em></label>
-						<textarea id="comments" name="comments" class="text">&nbsp;</textarea>
-						</li><li>
-						<input type="submit" value="Save Form" />
-						</li></ol>
-					</fieldset>
-					</form>
-				</dt>
-		</div>
-		<div class="clear">&nbsp;</div>
-		<a href="#tableOfContents">back to top</a>
-	</div>
+		<article id="ajax">
+				<dl>
+					<dt><h1>Ajax Options</h1></dt>
+						<dt>global</dt><dd> true | false : this option is by default true, but you can turn off the global functions by setting it to false.
+						**WARNING** Much functionality is handled globally by TorchUI, turn this off at your own risk **WARNING**</dd>
+						<dt>timeout</dt><dd>  MilliSeconds : Default is 2500 ms so that the Ajax call will timeout after 2.5 seconds of no response.</dd>
+						<dt>cache</dt><dd>  true | false : Defaults to true.  This tells the browser whether to cache the information or not.</dd>
+						<dt>url</dt><dd>  String (Required) : this points to a fully qualified path to a resource.</dd>
+						<dt>dataType</dt> 
+						    <dd>* "xml": Returns a XML document that can be processed via jQuery.</dd>
+							<dd>* "html": Returns HTML as plain text; included script tags are evaluated when inserted in the DOM.</dd>
+							<dd>* "script": Evaluates the response as JavaScript and returns it as plain text. Disables caching unless option "cache" is used. Note: This will turn POSTs into GETs for remote-domain requests.</dd>
+							<dd>* "json": Evaluates the response as JSON and returns a JavaScript Object.</dd>
+							<dd>* "jsonp": Loads in a JSON block using JSONP. Will add an extra "?callback=?" to the end of your URL to specify the callback.</dd>
+							<dd>* "text": A plain text string.</dd>
+							<dd>Default is set to "json".</dd>
+						<dt>data</dt><dd>Data to be sent to the server. It is converted to a query string, if not already a string. It's appended to the url for GET-requests. See processData option to prevent this automatic processing. Object must be Key/Value pairs. If value is an Array, jQuery serializes multiple values with same key i.e. {foo:["bar1", "bar2"]} becomes '&foo=bar1&foo=bar2'.</dd>
+						<dt>group</dt><dd>String : Assigning a group will then allow buffering of the groups. Meaining that the ajax calls are called one after another, after the previous call completes.</dd>
+						<dt>initialWait</dt><dd>MilliSeconds : Default is 800. This is used in the grouping of the ajax calls. The time will determine the length that is used to wait between the calls so they are properly throttled.</dd>
+					<dt><h1>Ajax Return Functions</h1></dt>
+						<dt>success</dt><dd>this is the function that will be called if the ajax is returned successful</dd>
+						<dt>error</dt><dd>this is the function that will be called if the ajax is returned as an error</dd>
+						<dt>complete</dt><dd>this is the function that will be called when the success or error is completed</dd>
+					<dt><h1>Ajax Functions</h1></dt>
+						<dt>$.ajax()</dt><dd>Sends an ajax call using all of the default options. This function will fail.</dd>
+						<dt>$.ajax({options})</dt><dd>The options must have {url: "String"} at the very least.</dd>
+							<dd><b>Example</b>: $.ajax({ url: "access/some/account.do", timeout:5000, success : function(data){ doThis(data); } });</dd>
+					<dt><h1>Ajax Interfaces</h1></dt>
+						<dd>All ajax calls that are using the "json" data type will be subject to the interface requirements explained below.</dd>
+						<dt>Response</dt>
+							<dd>All responses will be an array.</dd>
+							<dd>The array will have 1 or more objects.</dd>
+							<dd>Each object will contain "type" and "value".  Optionally a "callback" can be used.</dd>
+							<dd> Type defaults to 1 = success and 0 = false.  Optionally you can specify others like "message" or "system failure"</dd>
+							<dd><b>Example Response from server:</b>
+								[ { type: 1, value : "You have successfully added a user" } ] </dd>
+							<dd>The response is held in an array so that multiple responses can be sent through single call if necessary.</dd>
+					
+					</dl>
+			
+			<div class="clear">&nbsp;</div>
+			<footer><a href="#tableOfContents">back to top</a></footer>
+		</article>
+		
+		<article id="dialogs">
+			<a href="javascript: void(null);" id="dialogbutton">Open Dialog</a>
+			<div title="this is my test this is my test this is my test this is my test" id="dialogtest">
+			 This is a div dialog test. This is a div dialog test. This is a div dialog test. This is a div dialog test. This is a div dialog test.
+			</div>
+		</article>
+		
+		
+		
+		<article id="forms">
+				<dl>
+					<dt><h1>Form Test</h1></dt>
+					<dt><h1>Callbacks</h1></dt>
+						<dd>Forms will automatically become ajax'd unless they have the class 'noajax'</dd>
+						<dd>To catch special actions, if any upon return, create a function like this to catch the 'callback'</dd>
+						<dd>$("#formID").bind("callbak", function(event, data) {  })  Where Data is the returned data if successful.</dd>
+					<dt>
+						<form id="test_form" action="" method="post">
+						<fieldset>
+						<legend>Test Form</legend>
+							<ol>
+							<li>
+							<label for="username">Username:<em>*</em></label>
+							<input type="text" id="username" name="username" class="username" />
+							</li><li>
+							
+							<label for="password">Password:<em>*</em></label>
+							<input type="password" id="password" name="password" class="password" />
+							</li><li>
+							
+							<label for="email">Email:<em>*</em></label>
+							<input type="text" id="email" name="email" class="email" />
+							</li><li>
+							
+							<label for="phone">Phone Number:<em>*</em></label>
+							<input type="text" id="phone" name="phone" class="phone"/>
+							</li><li>
+							
+							<label for="zip">Zip Code:</label>
+							<input type="text" id="postal" name="postal"class="postal" />
+							</li><li>
+							
+							<label for="firstname">First Name:<em>*</em></label>
+							<input type="text" id="firstname" name="firstname" class="namefield" />
+							</li><li>
+							
+							<label for="lastname">Last Name:</label>
+							<input type="text" id="lastname" name="lastname" class="namefield" />
+							</li><li>
+							
+							<label for="dob">Date Of Birth:<em>*</em></label>
+							<input type="text" id="dob" name="dob" class="dob" />
+							</li><li>
+							
+							<label for="comments">Comments:<em>*</em></label>
+							<textarea id="comments" name="comments" class="text">&nbsp;</textarea>
+							</li><li>
+							<input type="submit" value="Save Form" />
+							</li></ol>
+						</fieldset>
+						</form>
+					</dt>
+			
+			<div class="clear">&nbsp;</div>
+			<footer><a href="#tableOfContents">back to top</a></footer>
+		</article>
+
+		
+		
+	</section>
 </div>
 
+<div class="container">
+	<footer class="grid_12">&copy; Copyright 2009 Andrew Wilson</footer>
+</div>
 
 <script type="text/javascript">
 	
