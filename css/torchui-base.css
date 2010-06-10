@@ -3,8 +3,8 @@
  *  Puts the global CSS into place for the rest of the framework to rely on.
  *  @author Drew Wilson
  *  @email drew@geedew.com
- *  @updated 11-30-2009
- *  @version 0.8.6
+ *  @updated 06-11-2010
+ *  @version 1.0
  *
  **/
 
@@ -97,113 +97,6 @@ nav.grid_12, article.grid_12, section.grid_12, aside.grid_12, header.grid_12, fo
 	margin:0;	}
 	
 	
-	
-/*!
- * NOTIFICATIONS CSS
- !*/
- div.notify {
-	padding: 			10px;
-	z-index: 			9999;
-}
-
-
-/** Normal Style Positions **/
-body > div.notify {
-	position:			fixed;
-}
-
-body > div.notify.top-left {
-	left: 				0px;
-	top: 				0px;
-}
-
-body > div.notify.top-right {
-	right: 				0px;
-	top: 				0px;
-}
-
-body > div.notify.bottom-left {
-	left: 				0px;
-	bottom:				0px;
-}
-
-body > div.notify.bottom-right {
-	right: 				0px;
-	bottom: 			0px;
-}
-
-body > div.notify.center {
-	top: 				0px;
-	width: 				50%;
-	left: 				25%;
-}
-
-/** Cross Browser Styling **/
-div.center div.torchui-notification, div.center div.torchui-closer {
-	margin-left: 		auto;
-	margin-right: 		auto;
-}
-div.notify div.torchui-notification, div.torchui div.torchui-closer {
-	background-color: 		#CBDEF1;
-	color: 					#333333;
-	opacity: 				.75;
-	filter: 				alpha(opacity = 75);
-	zoom: 					1;
-	width: 					435px;
-	padding: 				10px;
-	margin-top: 			5px;
-	margin-bottom: 			5px;
-	font-family: 			Tahoma, Arial, Helvetica, sans-serif;
-	font-size: 				12px;
-	text-align: 			left;
-	display: 				none;
-	-moz-border-radius: 	5px;
-	-webkit-border-radius:	5px;
-}
-
-div.notify div.torchui-notification.error {
-	background-color: 		#FF9999; }
-div.notify div.torchui-notification.success {
-	background-color: 		#CCFF99; }
-div.notify div.torchui-notification.debug {
-	background-color: 		#666666;
-	color: 					#FFFFFF; }
-	
-div.notify div.torchui-notification.loading {
-	background:#F1F2E2 url('../gfx/loading.gif') 0 50% no-repeat;
-	padding-left:40px;
-	width:200px;
-	color:#545454; }
-
-div.notify div.torchui-notification {
-	min-height: 			40px;
-}
-
-div.notify div.torchui-notification div.header {
-	font-weight: 			bold;
-	font-size:				10px;
-}
-
-div.notify div.torchui-notification div.close {
-	float: 					right;
-	font-weight: 			bold;
-	font-size: 				12px;
-	cursor:					pointer;
-}
-
-div.notify div.torchui-closer {
-	height: 				15px;
-	padding-top: 			4px;
-	padding-bottom: 		4px;
-	cursor: 				pointer;
-	font-size:				11px;
-	font-weight: 			bold;
-	text-align: 			center;
-}
-
-/*! / END NOTIFICATIONS !*/	
-	
-
 
 /*!
  * FORMS CSS
@@ -269,7 +162,41 @@ form em {
 
 /*! / END FORMS !*/	
 
-
+/*!
+ *	BUTTONS CSS
+ !*/
+ul li.buttons, div.buttons{height:25px;width:100%}
+ul li.buttons a, div.buttons a{background:transparent url(resources/image/buttons.background.png) no-repeat 100% 0;color:#faf7f0;display:block;float:right;height:25px;margin-left:10px;min-width:30px;padding-right:5px;text-align:center;text-decoration:none;width:auto;cursor:pointer}
+ul li.buttons a span input, div.buttons a span input {background:transparent url(resources/image/blank.gif) no-repeat 0 0;border:0;color:#faf7f0;cursor:pointer;float:none;font:inherit;font-size:100%;font-weight:700;height:25px;line-height:25px !important;margin:0 !important;padding:0 !important;width:auto}
+ul li.buttons a:hover, ul li.buttons a.hover, div.buttons a:hover, div.buttons a.hover{background-position:100% -25px}
+ul li.buttons a span, div.buttons a span{background:transparent url(resources/image/buttons.background.png) no-repeat 0 0;color:#faf7f0;display:block;font-weight:700;line-height:25px;margin-left:-5px;padding-left:5px}
+ul li.buttons a:hover span, ul li.buttons a.hover span, div.buttons a:hover span, div.buttons a.hover span{background:transparent url(resources/image/buttons.background.png) no-repeat 0 -25px;font-weight:700}
+ul li.buttons a.cancel, div.buttons a.cancel{background-position:100% -50px}
+ul li.buttons a.cancel:hover, ul li.buttons a.cancel.hover, div.buttons a.cancel:hover, div.buttons a.cancel.hover{background-position:100% -75px}
+ul li.buttons a.cancel span, div.buttons a.cancel span{background-position:0 -50px;color:#BB6444;font-weight:200}
+ul li.buttons a.cancel span input, div.buttons a.cancel span input { color:#BB6444;font-weight:200; }
+ul li.buttons a.cancel:hover span, ul li.buttons a.cancel.hover span, div.buttons a.cancel:hover span, div.buttons a.cancel.hover span{background-position:0 -75px;color:#faf7f0;font-weight:200}
+ul li.buttons a.cancel:hover span input, ul li.buttons a.cancel.hover span input, div.buttons a.cancel:hover span input, div.buttons a.cancel.hover span input{color:#faf7f0;font-weight:200}
+ul li.buttons a.highlight, div.buttons a.highlight{background-position:100% -100px}
+ul li.buttons a.highlight:hover, ul li.buttons a.highlight.hover, div.buttons a.highlight:hover, div.buttons a.highlight.hover{background-position:100% -125px}
+ul li.buttons a.highlight span, div.buttons a.highlight span{background-position:0 -100px;color:#757575;font-weight:200}
+ul li.buttons a.highlight:hover span, ul li.buttons a.highlight.hover span, div.buttons a.highlight:hover span, div.buttons a.highlight.hover span{background-position:0 -125px;color:#faf7f0;font-weight:200}
+ul li.buttons a.highlight:hover span input, div.buttons a.highlight:hover span input{color:#faf7f0;font-weight:200}
+ul li.buttons a.special, div.buttons a.special{background-position:100% -150px}
+ul li.buttons a.special:hover, ul li.buttons a.special.hover, div.buttons a.special:hover, div.buttons a.special.hover{background-position:100% -175px}
+ul li.buttons a.special span, div.buttons a.special span{background-position:0 -150px;color:#757575;font-weight:200}
+ul li.buttons a.special:hover span, ul li.buttons a.special.hover span, div.buttons a.special:hover span, div.buttons a.special.hover span{background-position:0 -175px;color:#faf7f0;font-weight:200}
+ul li.buttons a.special:hover span input, div.buttons a.special:hover span input{color:#faf7f0}
+ul li.buttons a.disabled, div.buttons a.disabled{background-position:100% -200px;font-style:italic}
+ul li.buttons a.disabled:hover, ul li.buttons a.disabled.hover, div.buttons a.disabled:hover, div.buttons a.disabled.hover{background-position:100% -225px}
+ul li.buttons a.disabled span, div.buttons a.disabled span{background-position:0 -200px;color:#666;font-style:italic;font-weight:200}
+ul li.buttons a.disabled:hover span, ul li.buttons a.disabled.hover span, div.buttons a.disabled:hover span, div.buttons a.disabled.hover span{background-position:0 -225px;font-weight:200}
+ul li.buttons a.highlight span input, div.buttons a.highlight span input, ul li.buttons a.special span input, div.buttons a.special span input{color:#757575;font-weight:200}
+/* Handle jQuery UI 1.8.2 dialog Buttons */
+div.ui-dialog-buttonpane button.cancel { background:#faf7f0; border:1px solid #faf7f0;color:#BB6444; }
+div.ui-dialog-buttonpane button.cancel.ui-state-hover { color:#cc0000; border-color:#cc0000; }
+div.ui-dialog-buttonpane button.cancel.ui-state-active { color:#ffffff; border-color:#cc0000; background-color:#cc0000 }
+/*! / END BUTTONS !*/
 
 	
 

@@ -1,15 +1,15 @@
 <!DOCTYPE HTML>
 <!-- HTML 5 DocType -->
 <!--/** 
- * TorchUI Library v0.8.6
+ * TorchUI Library v1.0
  *
- * Copyright (c) 2009 Andrew Wilson
+ * Copyright (c) 2010 Andrew Wilson
  * Licensed under MIT
  *
  * @author Drew Wilson
  * @email drew@geedew.com
- * @updated 11-30-2009
- * @version 0.8.6
+ * @updated 6-5-2010
+ * @version 1.0
  * 
  */-->
 <html lang="en">
@@ -20,10 +20,13 @@
 	<title>TorchUI: jQuery JavaScript Library</title>
 
 	<!-- This should ideally be the only css file that is necessary, as it uses import to get the other sites CSS -->
-	<link rel="stylesheet" href="site.css" type="text/css" />
-	<script src="torchui.js" type="text/javascript">({debug:true, firebugLite:false, useNotifyPlugin: false})</script>
+	<link rel="stylesheet" href="torchui-site.css" type="text/css" />
+	<script src="torchui-1.0.js" type="text/javascript"></script>
 	<link rel="shortcut icon"  type="image/x-icon"  href="" />
-
+	<script type="text/javascript">
+	
+	var $ = jQuery; // Testing noConflict
+	</script>
 	<!--  Force IE8 to Render in IE7 Mode -->
 	<!--  While it's hard to condone this, it is a very effective way to minimize you're development time -->
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
@@ -92,61 +95,7 @@
 			<div class="clear">&nbsp;</div>
 			<footer><a href="#tableOfContents">back to top</a></footer>
 		</article>
-		
-		<article id="language">
-			
-				<dl>
-					<dt><h1>Language Functions</h1></dt>
-					<dt>$.language()</dt><dd>Returns current language</dd>
-					<dt>$.language(VAR)</dt><dd>VAR : Language name (ex: "en")</dd><dd>Sets the language to use the VAR language passed</dd>
-					<dt>$.language(VAR)</dt><dd>VAR : Variable name (ex: "mytitle")</dd><dd>Returns the varible value in the current langauge, if no value is present, the current language will be returned.</dd>
-					<dt>$.language(VAR, PATH)</dt><dd>VAR : Language name (ex: "en")</dd><dd>PATH : The absolute web path of the file to include (can be an appropriately formatted service url).</dd><dd>Add the language file, and set to this language</dd>
-					<dt>$(OBJECT[S]).language(VAR)</dt><dd>VAR : Variable name (ex: "mytitle")</dd><dd>OBJECT[s] : Get list of objects using CSS styled selecting (ex: "#myid div.myclass")</dd><dd>Sets the inner html of the object to the var</dd>
-				</dl>
-				<div class="box" id="languageTest">
-					<h1 class="title">Language Test Failed</h1>
-					<select id="changelang" onchange="$.language(this.value);">
-						<option value="en">English</option>
-						<option value="es">Espanol</option>
-					</select>
-				</div>
-			
-			<div class="clear">&nbsp;</div>
-			<footer><a href="#tableOfContents">back to top</a></footer>
-		</article>
 	
-		<article id="notifications">
-				<dl>
-					<dt><h1>Notification Functions</h1></dt>
-					<dt>$.notify(STRING)</dt><dd>Puts a notification onto the page using all default values.</dd>
-					<dt>$.notify(STRING, { NAME:VALUE , ...})</dt><dd>NAME : This is the name of an option</dd><dd>VALUE : This is the value of the option</dd>
-					<dd>Creates a notification using optional parameters</dd>
-					<dt><h1>Notification Options</h1></dt>
-					<dt>theme</dt>
-						<dd>"message" : Sets the notification to the theme of a message type.  This will display an evelope next to the message passed.</dd>
-						<dd>"loading" : This creates a loading notification into the top corner.</dd>
-						<dd>"debug" : This will set the message to be only shown while in debugging mode</dd>
-						<dd>"success" : This is to show a success message</dd>
-						<dd>"error" : This is to show an error message</dd>
-					<dt>sticky</dt>
-						<dd> true | false : This will make the notification 'sticky' meaning it will not dissapear on it's own, it must be clsoed</dd>
-					<dt>life</dt>
-						<dd> MilliSeconds : This is how many milliseconds the notification will live (ex : 3000 = 3 seconds)</dd>
-					<dt>header</dt>
-						<dd> STRING : This is an optional Header.  It will display above the message and bold</dd>
-					<dt>beforeOpen</dt>
-						<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run before the notification is opened.</dd>
-					<dt>open</dt>
-						<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run when the notification is opened.</dd>
-					<dt>beforeClose</dt>
-						<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run before the notification is closed.</dd>
-					<dt>close</dt>
-						<dd>FUNCTION : 	function(e,m,o) {} : This is a function that wil run when the notification is closed.</dd>
-				</dl>
-			
-			<div class="clear">&nbsp;</div>
-			<footer><a href="#tableOfContents">back to top</a></footer>
-		</article>
 	
 		<article id="ajax">
 				<dl>
@@ -215,7 +164,7 @@
 							<ol>
 							<li>
 							<label for="username">Username:<em>*</em></label>
-							<input type="text" id="username" name="username" class="username" />
+							<input type="text" id="username" name="username" class="username" data-validate = "required" />
 							</li><li>
 							
 							<label for="password">Password:<em>*</em></label>
@@ -269,25 +218,29 @@
 </div>
 
 <script type="text/javascript">
-	
 
 	$(document).ready(function() {
-		/*Set the Language Test Var */
-		$("#languageTest h1.title").language("languageTitle");	
 
 		/* Create a dialog */
-		$("#dialogtest").dialog({
+		$("#dialogtest").opendialog({
 			autoOpen: false,
 			modal: true,
 			buttons: {
-				"Ok": function() { 
-					$(this).dialog("close"); 
+				"Ok": {
+					action : function() { 
+						$(this).dialog("close"); 
+					}, 
+					type : "submit"
 				}, 
-				"Cancel": function() { 
-					$(this).dialog("close"); 
-				} 
+				"Cancel": {
+					action : function() { 
+						$(this).dialog("close"); 
+					}, 
+					type : "cancel"
+				}
 			}
 		});
+		
 		/* Add Dialog Button Functionality */
 		$('#dialogbutton').click(function(){
 			$('#dialogtest').dialog('open');

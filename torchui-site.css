@@ -3,8 +3,8 @@
  * Abstract the importing, so that it is easier to implement in seperate sites.
  * @author Drew Wilson
  * @email drew@geedew.com
- * @updated 11-30-2009
- * @version 0.8.6
+ * @updated 06-10-2010
+ * @version 1.0
  *
  **/
 
@@ -24,7 +24,7 @@
 	@import url("css/torchui-base.css") screen; /* Not IE6 Compatible, remove the media tag if concerned */
 
 /* Bring in the jQuery UI Framework */
-	@import url("css/custom-theme/jquery-ui-1.7.1.custom.css") screen;/* Not IE6 Compatible, remove the media tag if concerned */
+	@import url("css/custom-theme/jquery-ui-1.8.2.custom.css") screen;/* Not IE6 Compatible, remove the media tag if concerned */
 
 
 /* Add the Custom UI Framework for the site */

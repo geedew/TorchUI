@@ -3,8 +3,8 @@ TorchUI  README
  * Andrew Wilson
  * http://www.geedew.com
  * drew@geedew.com
-Last Updated - 08.26.2009
-Version -
+Last Updated - 06.10.2010
+Version - 1.0
 
 
 Description :
@@ -20,6 +20,7 @@ Table of Contents :
  3. Basic API
  4. Plugins Utilized
  5. Licenses
+ 6. Changelog
 
 
 
@@ -30,8 +31,8 @@ Table of Contents :
 Currently, the most simple way to explain how to install is to drop the files into your root path of a website, and then include them like this, 
 
 
-	<link rel="stylesheet" href="site.css" type="text/css" />
-	<script src="torchui.js" type="text/javascript">({debug:false,lite:{minimized:true}})</script>
+	<link rel="stylesheet" href="torchui-site.css" type="text/css" />
+	<script src="torchui-1.0.js" type="text/javascript"></script>
 
 between the <head></head> tags of the html document.  Notice, you CAN pass the options for torchui within the script tags as long as it is in the object form shown.
 
@@ -48,9 +49,9 @@ Configuring can be found at the top of the TorchUI.js file... It's all there and
 --------------------
 ---  PLUGINS UTILIZED
 --------------------
-* jQuery 1.3.2- DO NOT INSTALL SEPARATE, SIMPLY TREAT TORCHUI AS YOUR JQUERY, EVERYTHING WILL WORK FINE.
+* jQuery 1.4.2- DO NOT INSTALL SEPARATE, SIMPLY TREAT TORCHUI AS YOUR JQUERY, EVERYTHING WILL WORK FINE.
+* jQuery 1.8.2
 * Firebug Lite -http://svn.jasonkarns.com/jquery/firebug/trunk/
-* Notify JS -http://alldorks.com/wordpress/notify
 * CMXForms
 * MaskedInput
 * ValidateJS
@@ -63,21 +64,22 @@ Configuring can be found at the top of the TorchUI.js file... It's all there and
 
 
 
-jQuery
- 
-/*
- * jQuery JavaScript Library v1.3.2
+
+/*!
+ * jQuery JavaScript Library v1.4.2
  * http://jquery.com/
  *
- * Copyright (c) 2009 John Resig
- * Dual licensed under the MIT and GPL licenses.
- * http://docs.jquery.com/License
+ * Copyright 2010, John Resig
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
  *
- * Date: 2009-02-19 17:34:21 -0500 (Thu, 19 Feb 2009)
- * Revision: 6246
+ * Includes Sizzle.js
+ * http://sizzlejs.com/
+ * Copyright 2010, The Dojo Foundation
+ * Released under the MIT, BSD, and GPL Licenses.
+ *
+ * Date: Sat Feb 13 22:33:48 2010 -0500
  */
- 
- 
  
 Sizzle CSS
 
@@ -88,14 +90,21 @@ Sizzle CSS
  *  More information: http://sizzlejs.com/
  */
 
-
-
 Firebug Lite 
-
 /**http://svn.jasonkarns.com/jquery/firebug/trunk/**/
+https://getfirebug.com/firebug-lite.js
 
 
+--------------------
+---  CHANGELOG
+--------------------
 
-Degrading Script Tags 
- 
-/** http://ejohn.org/blog/degrading-script-tags**/
+V1.0 - 
+ * Removed the $.notify functions (lack of support)
+ * Removed the $.language functions (never completed)
+ * Upgraded to jQuery 1.4.2 and jQuery-UI 1.8.2
+ * Removed SlickAnchors (never completed)
+ * Removed the Degrading Script Tags
+ * Fixed support for torchui-site.css
+ * Now using Firebug Lite directly from the getfirebug site
+ * Added the jQuery UI Dialog Button theming support
