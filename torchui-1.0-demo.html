@@ -32,6 +32,32 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 </head>
 <body>
+<style type="text/css">
+.dropSection { border:solid 1px black; }
+</style>
+<div class="container">
+	<header class="grid_10 prefix_1 suffix_1">Torch UI Menu</header>
+	<section class="grid_4 prefix_2">
+		<div class="object origin anchor">Anchor Tag</div>
+		<div class="object origin header1">Page Title</div>
+	</section>
+	<section class="grid_4 suffix_2">
+		<div class="object origin header1">Section Title</div>
+		<div class="object origin paragraph">Paragraph</div>
+	</section>
+	<footer class="grid_10 prefix_1 suffix_1"></footer>
+</div>
+
+<div class="container">
+	<section class="grid_6 dropSection">
+	<br />
+	</section>
+	<section class="grid_6 dropSection">
+	<br />
+	</section>
+</div>
+
+
 <div class="container">
 	<header class="grid_10 prefix_1 suffix_1">
 		<h1> Torch UI </h1>
@@ -222,24 +248,7 @@
 	$(document).ready(function() {
 
 		/* Create a dialog */
-		$("#dialogtest").opendialog({
-			autoOpen: false,
-			modal: true,
-			buttons: {
-				"Ok": {
-					action : function() { 
-						$(this).dialog("close"); 
-					}, 
-					type : "submit"
-				}, 
-				"Cancel": {
-					action : function() { 
-						$(this).dialog("close"); 
-					}, 
-					type : "cancel"
-				}
-			}
-		});
+		
 		
 		/* Add Dialog Button Functionality */
 		$('#dialogbutton').click(function(){
@@ -255,6 +264,24 @@
 		/* do special actions here, DATA is what's being returned by the ajax. */
 		/* Callback is getting called automatically by the autoforms feature */
 	})
+	
+	$(".object").draggable({ revert: true,opacity: 0.7, helper: 'clone' });
+	
+	$(".dropSection").droppable({
+		drop: function(event,ui) { 
+			if($(ui.draggable).hasClass("anchor")) {
+				$(this).append($("<a />").text("Test Anchor"));
+			} else if ($(ui.draggable).hasClass("paragraph")) {
+				$(this).append($("<p />").text(prompt("Please enter paragraph text","Test Data")));
+				
+			}
+		}
+	}).sortable();
+	
+	$("p").live("dblclick", function() {
+		
+		$(this).html(prompt("Please enter paragraph text","Test Data"));
+	});
 </script>
 
 
