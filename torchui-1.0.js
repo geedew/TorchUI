@@ -27,7 +27,7 @@
 
 /****CONFIGURATION*****/
 // Add a path that is the web path to the torchui.js 
-var torchPath =  "";
+var torchPath =  "TorchUI/";
 var torchConfig = {
 	/*!! General Config !!*/
 	/*** Use jQuery with other packages like Dojo and Prototype ***/
