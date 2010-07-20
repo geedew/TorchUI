@@ -7538,12 +7538,16 @@ $.fn.metadata = function( opts ){
 	  $(document).ajaxError(function(event, XMLHttpRequest, ajaxOptions, thrownError) {
 		/* default ajax error handler */
 		/* Check to make sure that this is an error, and not a page refresh of any kind */
-         if(XMLHttpRequest.readyState == 0 || XMLHttpRequest.status == 0) 
-              return;  // it's not really an error
-         else {
-		
-			alert("There was a system error, please try again.");
-			$.debug("Error with Ajax Call");
+         /* Fixing a defect that this call is made no matter if there is already an existig error handler function
+			for the ajax call */
+		if(!ajaxOptions.error) {
+			 if(XMLHttpRequest.readyState == 0 || XMLHttpRequest.status == 0) 
+				  return;  // it's not really an error
+			 else {
+			
+				alert("There was a system error, please try again.");
+				$.debug("Error with Ajax Call");
+			}
 		}
 	  });
 	  
